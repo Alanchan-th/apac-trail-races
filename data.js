@@ -275,13 +275,28 @@ var EVENT_NOTES = [
 ];
 
 var GPX_URLS = {
-  pagoda:"https://pdf.utmb.world/raw/upload/v1794902574/thailand/GPX/PAGODA50/Pagoda_50_Stations_10d7379f15.gpx",
-  inthanon:"https://pdf.utmb.world/raw/upload/v1790325221/thailand/GPX/2026/Inthanon_20_Stations_e6e1865a68.gpx",
-  chiangdao:"https://pdf.utmb.world/raw/upload/v1790325226/thailand/GPX/2026/Chiang_Dao_160_Stations_af5020d931.gpx",
-  elephant:"https://pdf.utmb.world/raw/upload/v1790325225/thailand/GPX/2026/Elephant_100_Stations_ddf2a67ffb.gpx",
-  hmong:"https://pdf.utmb.world/raw/upload/v1794297817/thailand/GPX/GPX.station/Hmong_50_Stations_376ca0a7e3.gpx",
-  suthep:"https://pdf.utmb.world/raw/upload/v1790325221/thailand/GPX/2026/SUTHEP_20_Stations_80cdce10d1.gpx",
-  chedi:"https://pdf.utmb.world/raw/upload/v1790325221/thailand/GPX/2026/Chedi_20_Stations_6c92674cfb.gpx"
+  pagoda:"gpx/pagoda.gpx",
+  inthanon:"gpx/inthanon.gpx",
+  chiangdao:"gpx/chiangdao.gpx",
+  elephant:"gpx/elephant.gpx",
+  hmong:"gpx/hmong.gpx",
+  suthep:"gpx/suthep.gpx",
+  chedi:"gpx/chedi.gpx"
+};
+
+/* ---------- 官方強制裝備圖（大會官方頁 accordion 對應，2026-11-20 核實載入） ---------- */
+var GEAR_IMG_BASE = "https://img.utmb.world/image/upload/q_auto/f_auto/c_fill,g_auto/if_w_gt_1920/c_scale,w_1920/if_end/v1/thailand/mandatory%20gear%202026/";
+var GEAR_IMG = {
+  "chiangdao160": { f:"Mandatory_Gear_Chiang_Dao_160_100_93e3a3bbbc", label:"CHIANG DAO 160 / ELEPHANT 100" },
+  "elephant100":  { f:"Mandatory_Gear_Chiang_Dao_160_100_93e3a3bbbc", label:"CHIANG DAO 160 / ELEPHANT 100" },
+  "hmong-day":    { f:"Mandatory_Gear_Hmong_50_Day_5000eb231a", label:"HMONG 50-DAY" },
+  "hmong-night":  { f:"Mandatory_Gear_Hmong_50_Night_abb9bca126", label:"HMONG 50-NIGHT" },
+  "inthanon20":   { f:"Mandatory_Gear_Inthanon_20_6d8045f599", label:"INTHANON 20" },
+  "pagoda-day":   { f:"Mandatory_Gear_Pagoda_50_Day_802921fcbd", label:"PAGODA 50-DAY" },
+  "pagoda-night": { f:"Mandatory_Gear_Pagoda_50_Night_a947fd8a28", label:"PAGODA 50-NIGHT" },
+  "suthep-night": { f:"Mandatory_Gear_Suthep_20_Night_829700e830", label:"SUTHEP 20-NIGHT" },
+  "suthep-day":   { f:"Mandatory_Gear_uthep_20_Day_Chedi_20_201c35bca8", label:"SUTHEP 20-DAY / CHEDI 20" },
+  "chedi20":      { f:"Mandatory_Gear_uthep_20_Day_Chedi_20_201c35bca8", label:"SUTHEP 20-DAY / CHEDI 20" }
 };
 
 var START_ISO = {
@@ -387,4 +402,118 @@ var PHOTO_CREDIT = {
 var SRC_LINE = {
   zh:"資料核實自 UTMB 官方賽事頁、時間表及 GPX，天氣取自 meteoblue、weather.com 及泰國國家公園廳（DNP）；最後整理：2026 年 11 月，如有出入以官方為準。",
   en:"Data verified against the official UTMB race pages, time charts and GPX files; weather from meteoblue, weather.com and Thailand's Department of National Parks (DNP). Last compiled: November 2026 — in case of any discrepancy, official announcements prevail."
+};
+
+/* ---------- 賽道點讀（其餘賽事；數字全部來自本站 GEO 分段數據＋官方站距/關門時間，外部講法已在 refs 標明來源） ---------- */
+var PHASES = {
+"pagoda-day": {
+  intro:{ zh:"兩道大牆夾住中段 — 爬升集中在 9–20 同 41–48 公里", en:"Two big walls with a rolling middle — the climbing is concentrated at km 9–20 and 41–48" },
+  items:[
+    { range:"KM 0 – 9", title:{zh:"開段先落：熱身落山", en:"A downhill warm-up"}, body:{ zh:"START → B1 Mae Klang Luang 攀升 +316 m、下降 −497 m，係全程唯一淨落嘅一段，先落後上。官方路線介紹指呢段之後會經過 Doi Hua Suea 同 Doi Pha Tang 一帶。", en:"START → B1 Mae Klang Luang gains +316 m but drops −497 m — the only net-downhill leg of the race. The official route description then takes runners past Doi Hua Suea toward Doi Pha Tang." } },
+    { range:"KM 9 – 20", title:{zh:"第一道大牆", en:"The first big wall"}, body:{ zh:"B1 → B2 Pha Tang 一段攀升 +1,081 m，係上半場最大爬升。Segly 嘅 2026 賽道分析同樣將呢段（KM 8.3–19.2）列為全程第一道大牆。", en:"B1 → B2 Pha Tang climbs +1,081 m, the biggest ascent of the first half. Segly's 2026 course analysis likewise calls this stretch (km 8.3–19.2) the first big wall of the race." } },
+    { range:"KM 20 – 41", title:{zh:"高地起伏，接住最大落山", en:"High rolling ground, then the biggest descent"}, body:{ zh:"B2 → B3 係 +383 / −390 m 嘅高地起伏（B3 關門 15:00）；跟住 B3 → B4 下降 −963 m，係全程最大單段落山，落到底先再爬。", en:"B2 → B3 rolls at altitude (+383 / −390 m; B3 cut-off 15:00), then B3 → B4 drops −963 m — the biggest single descent of the course — before the climbing resumes." } },
+    { range:"KM 41 – 57", title:{zh:"登塔主爬，長落終點", en:"The pagoda climb, then the long drop home"}, body:{ zh:"B4 → B5 一段攀升 +1,146 m，係全程最大爬升，登上最高點 2,147 m；B5 Relic of the Buddha 位處雙皇家塔一帶（官方路線地標），關門 21:30。之後 B5 → 終點下降 −924 m 長落返國家公園總部。", en:"B4 → B5 climbs +1,146 m, the biggest ascent of the race, to the course high point of 2,147 m. B5 Relic of the Buddha sits by the Twin Royal Pagodas, the landmark named in the official route description (cut-off 21:30). From there it is a −924 m descent back to the park headquarters finish." } }
+  ],
+  refs:[
+    { n:"大會官方 PAGODA 50-DAY 賽事頁", u:"https://chiangmai.utmb.world/races/PAGODA50-DAY" },
+    { n:"Segly 賽道分析（PAGODA 50-DAY）", u:"https://www.instagram.com/reel/Dfpcgo7sC8v/" }
+  ]
+},
+"pagoda-night": {
+  intro:{ zh:"同日賽同一條路 — 主爬升在黑夜完成，天光時登塔", en:"The same course as the day race — the big climbs come at night, the pagodas at dawn" },
+  items:[
+    { range:"KM 0 – 9", title:{zh:"入黑開段：先落", en:"Into the dark: downhill first"}, body:{ zh:"18:00 起步，START → B1 Mae Klang Luang 攀升 +316 m、下降 −497 m，係全程唯一淨落嘅一段，在黑夜中先落後上。", en:"Starting at 18:00, START → B1 Mae Klang Luang gains +316 m but drops −497 m — the only net-downhill leg — run entirely in darkness." } },
+    { range:"KM 9 – 20", title:{zh:"夜攀第一道大牆", en:"The first wall, climbed at night"}, body:{ zh:"B1 → B2 Pha Tang 攀升 +1,081 m，係上半場最大爬升；日賽嘅賽道分析（Segly）將呢段列為全程第一道大牆，夜賽要在頭燈下完成同一道牆。", en:"B1 → B2 Pha Tang climbs +1,081 m, the biggest ascent of the first half. Segly's course analysis calls this the first big wall of the race; at night the same wall is climbed by headlamp." } },
+    { range:"KM 20 – 41", title:{zh:"高地起伏，接住最大落山", en:"High rolling ground, then the biggest descent"}, body:{ zh:"B2 → B3 +383 / −390 m 高地起伏（B3 關門 02:00）；B3 → B4 下降 −963 m，係全程最大單段落山（B4 關門 05:00）。", en:"B2 → B3 rolls at altitude (+383 / −390 m; B3 cut-off 02:00), then B3 → B4 drops −963 m, the biggest single descent of the course (B4 cut-off 05:00)." } },
+    { range:"KM 41 – 57", title:{zh:"天光登塔，長落終點", en:"The pagodas at dawn, then the long drop home"}, body:{ zh:"B4 → B5 攀升 +1,146 m 登上最高點 2,147 m（B5 關門 08:30）；賽事指南 Fat Marathoner 指夜賽嘅時間編排係為咗跑手在天光時到達雙皇家塔。之後下降 −924 m 返總部，終點關門 10:30。", en:"B4 → B5 climbs +1,146 m to the 2,147 m high point (B5 cut-off 08:30). The Fat Marathoner event guide notes the night race is timed so runners reach the Twin Royal Pagodas at dawn. A −924 m descent then returns to headquarters; the finish closes at 10:30." } }
+  ],
+  refs:[
+    { n:"大會官方 PAGODA 50-NIGHT 賽事頁", u:"https://chiangmai.utmb.world/races/PAGODA50-NIGHT" },
+    { n:"Fat Marathoner 賽事指南", u:"https://fatmarathoner.com/hoka-chiang-mai-thailand/" }
+  ]
+},
+"inthanon20": {
+  intro:{ zh:"最高點嚟得最早 — 約 km 3 已登上 1,453 m，尾段仲有第二爬", en:"The high point comes first — 1,453 m at about km 3, with a second climb saved for the end" },
+  items:[
+    { range:"KM 0 – 10", title:{zh:"一開波就登頂，再落村", en:"Straight to the top, then down to the village"}, body:{ zh:"START → B6 Phamon Village 攀升 +440 m、下降 −504 m；全程最高點 1,453 m 在 GPX 約 km 3 就出現，先攀高位、再落山入站，開段起伏已經係全場最大。", en:"START → B6 Phamon Village gains +440 m and drops −504 m. The course high point, 1,453 m, arrives at about km 3 on the GPX — climb high early, then descend into the station. This opening leg holds the race's biggest swings." } },
+    { range:"KM 10 – 16", title:{zh:"谷底過渡段", en:"A gentler valley transition"}, body:{ zh:"B6 → B1 Mae Klang Luang 只有 +112 / −219 m，係全程最平緩嘅一段（B1 關門 12:00）。大會介紹指 Inthanon 組別賽道穿越 Doi Inthanon 嘅山脊同梯田一帶。", en:"B6 → B1 Mae Klang Luang is the gentlest leg of the race at +112 / −219 m (B1 cut-off 12:00). UTMB's event coverage describes the Inthanon races as crossing the ridges and rice terraces of Doi Inthanon." } },
+    { range:"KM 16 – 20", title:{zh:"尾段第二爬", en:"A second climb at the end"}, body:{ zh:"B1 → 終點攀升 +281 m、下降只得 −108 m — 全程 44% 嘅爬升留喺最後三分一，唔好以為過咗 B1 就一路落返終點。終點關門 14:00。", en:"B1 → finish climbs +281 m against only −108 m of descent: 44% of the race's total climbing sits in the final third. Do not expect a free ride down after B1. The finish closes at 14:00." } }
+  ],
+  refs:[
+    { n:"大會官方 INTHANON 20 賽事頁", u:"https://chiangmai.utmb.world/races/INTHANON20" },
+    { n:"UTMB World Series 賽事介紹", u:"https://utmb.world/news/events-november-2025" }
+  ]
+},
+"chiangdao160": {
+  intro:{ zh:"冇一段獨大 — 爬升平均攤在 17 段，係累積型嘅兩晚長課", en:"No single monster leg — the climbing is spread across all 17 legs of a two-night race" },
+  items:[
+    { range:"KM 0 – 33", title:{zh:"清邁道開段：爬升漸入", en:"Chiang Dao opening: the climbing builds"}, body:{ zh:"起點在 Wat Tham Chiang Dao、Doi Luang Chiang Dao 山腳（Multiday Running 賽事指南）。START → A1 只有 +197 / −179 m；A1 → A2 +1,026 m、A2 → A3 +914 m 連續兩段大爬，全程最高點 1,725 m 在 A3 Pagia Highland Research Station 前後出現（A3 關門 19:00）。", en:"The race starts at Wat Tham Chiang Dao, at the foot of Doi Luang Chiang Dao (Multiday Running event guide). START → A1 is gentle (+197 / −179 m), then A1 → A2 (+1,026 m) and A2 → A3 (+914 m) stack two major climbs back to back. The course high point, 1,725 m, comes around A3 Pagia Highland Research Station (cut-off 19:00)." } },
+    { range:"KM 33 – 72", title:{zh:"上完即落，落完再上", en:"Climb, plunge, repeat"}, body:{ zh:"A3 → A4 +355 / −786 m、A4 → A5 +124 / −730 m 兩段大落（A5 關門 23:00），跟住 A5 → A6 +981 m 即刻爬返上去，再 A6 → A7 −610 m 落山 — 呢種直上直落嘅節奏係成條賽道嘅常態。", en:"A3 → A4 (+355 / −786 m) and A4 → A5 (+124 / −730 m) are two major descents (A5 cut-off 23:00), immediately answered by a +981 m climb A5 → A6 and a −610 m drop A6 → A7. This up-and-down rhythm is the course's constant pattern." } },
+    { range:"KM 72 – 115", title:{zh:"中段消耗戰", en:"The grinding middle"}, body:{ zh:"A7（關門 04:00）之後連續五段攀升介乎 +358 至 +632 m，冇一段特別兇，但亦冇一段俾你唞 — 中段三分一佔全程爬升 36%。A10 關門 12:30、A11 Wat Pang Hai 關門 16:30。", en:"After A7 (cut-off 04:00), five straight legs each climb between +358 m and +632 m. None is extreme, but none lets up either — the middle third holds 36% of the race's total climbing. A10 closes at 12:30 and A11 Wat Pang Hai at 16:30." } },
+    { range:"KM 115 – 173", title:{zh:"南下清邁：最大落山＋最後一山", en:"South to Chiang Mai: the biggest descent and one last mountain"}, body:{ zh:"A12 Monjam 之後下降 −1,147 m，係全程最大單段落山（A13 Mae Sa Elephant Camp 關門 23:30）；但未完 — A13 → A15 經 A14 再爬 +731 / +708 m 上 Wat Doi Pui，跟住 A15 → A16 下降 −1,066 m（關門 07:30），最後 −538 m 入 PAO Park。Segly 賽事總覽指呢條線沿 Doi Luang Chiang Dao UNESCO 生物圈保護區邊緣而行，要預兩晚喺賽道上。", en:"After A12 Monjam the course drops −1,147 m, its biggest single descent (A13 Mae Sa Elephant Camp cut-off 23:30). It is not over: A13 → A15 climbs again via A14 (+731 / +708 m) up to Wat Doi Pui, then A15 → A16 descends −1,066 m (cut-off 07:30) before a final −538 m into PAO Park. Segly's event overview notes the route skirts the Doi Luang Chiang Dao UNESCO Biosphere Reserve and takes two nights on the trail." } }
+  ],
+  refs:[
+    { n:"Multiday Running 賽事指南", u:"https://multidayrunning.com/events/chiang-mai-thailand-by-utmb" },
+    { n:"Segly 賽事總覽（Chiang Mai 2026）", u:"https://segly.vo2run.app/en/pages/articles/chiang-mai-utmb-2026-gpx.html" }
+  ]
+},
+"elephant100": {
+  intro:{ zh:"全程上上落落 — 最大落山同最高點都留喺後半場", en:"Up and down all day — the biggest descent and the summit both wait in the second half" },
+  items:[
+    { range:"KM 0 – 28", title:{zh:"開段三站，先爬後落", en:"Three stations in: climb first, then drop"}, body:{ zh:"起點 Wat Nhong Bua Noi → A18 +369 m、→ A9 Wat Phraphutthabat Si Roi +708 m 連續上攀；A9 → A10 跟住下降 −686 m。Segly 嘅 2026 賽道分析形容全程節奏係「上上落落，成日都係咁」，並將 KM 20–27.6 列為技術性落山段。", en:"From Wat Nhong Bua Noi, A18 (+369 m) and A9 Wat Phraphutthabat Si Roi (+708 m) climb back to back; A9 → A10 then drops −686 m. Segly's 2026 course analysis calls the rhythm 'up and down, all day long' and flags km 20–27.6 as a technical descent." } },
+    { range:"KM 28 – 58", title:{zh:"中段迎嚟全程最大落山", en:"The biggest descent of the race"}, body:{ zh:"A11（關門 19:30）→ A12 +531 m 之後，A12 Monjam → A13 Mae Sa Elephant Camp 下降 −1,153 m，係全程最大單段落山；Segly 分析量度 KM 42.8–56.8 一段下降約 −1,181 m，同本站 GPX 數字接近。A13 關門 01:30。", en:"After A11 (cut-off 19:30) and a +531 m climb to A12 Monjam, the leg to A13 Mae Sa Elephant Camp drops −1,153 m — the biggest single descent of the race. Segly's analysis measures about −1,181 m over km 42.8–56.8, close to this site's GPX figure. A13 closes at 01:30." } },
+    { range:"KM 58 – 77", title:{zh:"落完即爬，直上最高點", en:"Straight back up to the roof of the race"}, body:{ zh:"A13 → A14 +730 m、A14 → A15 Wat Doi Pui +711 m 兩段連爬，登上全程最高點 1,600 m（GPX 約 km 78）；Segly 分析同樣將 KM 75.6 起稱為全程嘅「屋頂」段。大會官方路線介紹指賽道穿過 Wat Phraphutthabat Si Roi、Doi Mon Jam 觀景位、Mae Sa Elephant Camp 同 Ban Doi Pui 苗族村。", en:"A13 → A14 (+730 m) and A14 → A15 Wat Doi Pui (+711 m) climb back to back to the course high point of 1,600 m (about km 78 on the GPX). Segly's analysis likewise calls the stretch from km 75.6 the 'roof of the race'. The official route description passes Wat Phraphutthabat Si Roi, the Doi Mon Jam viewpoints, Mae Sa Elephant Camp and the Hmong village of Ban Doi Pui." } },
+    { range:"KM 77 – 101", title:{zh:"長落回城", en:"The long drop back to the city"}, body:{ zh:"A15 → A16 Montha Than Waterfall 下降 −1,073 m（關門 09:30），再 A16 → 終點 −541 m 返 PAO Park；尾段兩段合計落超過 1,600 m，落山能力同補給紀律決定尾段速度。", en:"A15 → A16 Montha Than Waterfall drops −1,073 m (cut-off 09:30), then A16 → finish loses another −541 m back to PAO Park. The final two legs descend more than 1,600 m in total — descending legs and fuelling discipline decide the run-in." } }
+  ],
+  refs:[
+    { n:"大會官方 ELEPHANT 100 賽事頁", u:"https://chiangmai.utmb.world/races/elephant100" },
+    { n:"Segly 賽道分析（ELEPHANT 100）", u:"https://www.instagram.com/reel/Dfr7WMIMjg-/" }
+  ]
+},
+"hmong-night": {
+  intro:{ zh:"日落後起步 — 主爬升全程在黑夜，終點前迎接天光", en:"An 18:00 start — the main climbs are all in darkness, with dawn before the finish" },
+  items:[
+    { range:"KM 0 – 19", title:{zh:"入黑熱身段", en:"Warming up in the dark"}, body:{ zh:"18:00 起步（日落約 17:46），START → A17 +176 / −145 m、A17 → A13 Mae Sa Elephant Camp +440 / −266 m，起伏溫和，係入夜後嘅熱身段；A13 關門 23:00。", en:"The 18:00 start is just after sunset (about 17:46). START → A17 (+176 / −145 m) and A17 → A13 Mae Sa Elephant Camp (+440 / −266 m) roll gently — a warm-up in the dark. A13 closes at 23:00." } },
+    { range:"KM 19 – 39", title:{zh:"夜間主爬升", en:"The main climbs, at night"}, body:{ zh:"A13 → A14 +737 / −250 m、A14 → A15 +713 / −326 m 兩段連爬，佔全程爬升超過一半；全程最斜上坡（約 +41%）在 GPX 約 km 38，臨到 A15 Wat Doi Pui 之前。A14 關門 02:00。", en:"A13 → A14 (+737 / −250 m) and A14 → A15 (+713 / −326 m) climb back to back and hold over half the race's total ascent. The steepest uphill grade of the course (about +41%) sits at about km 38 on the GPX, just before A15 Wat Doi Pui. A14 closes at 02:00." } },
+    { range:"KM 39 – 52", title:{zh:"登頂，隨即長落山", en:"The summit, then the long descent"}, body:{ zh:"全程最高點 1,600 m 在 GPX 約 km 40.5；過 A15 之後下降 −1,087 m 去 A16 Montha Than Waterfall，係全程最大單段落山（關門 08:00）。", en:"The course high point, 1,600 m, comes at about km 40.5 on the GPX. After A15 the course drops −1,087 m to A16 Montha Than Waterfall — the biggest single descent of the race (cut-off 08:00)." } },
+    { range:"KM 52 – 63", title:{zh:"晨光衝線", en:"The dawn run-in"}, body:{ zh:"A16 → 終點 +161 / −532 m，先落後平返 PAO Park。日出約 06:42，終點關門 10:30 — 大部分跑手會喺晨光中完成最後一段。", en:"A16 → finish runs +161 / −532 m, descending then flattening into PAO Park. Sunrise is about 06:42 and the finish closes at 10:30, so most of the field covers this final leg in morning light." } }
+  ],
+  refs:[
+    { n:"大會官方 HMONG 50-NIGHT 賽事頁", u:"https://chiangmai.utmb.world/races/HMONG50-Night" }
+  ]
+},
+"suthep-day": {
+  intro:{ zh:"一爬一落 — 爬升幾乎全部集中在 5–15 公里一段", en:"One climb, one descent — almost all the climbing sits between km 5 and 15" },
+  items:[
+    { range:"KM 0 – 5", title:{zh:"平緩入山", en:"An easy run-in"}, body:{ zh:"START → W4 Mae Chok Luang 只有 +71 / −35 m，係 PAO Park 出發入 Doi Suthep-Pui 國家公園山麓嘅平緩熱身（Goat Maps 賽事指南指 Suthep 20 係由 PAO Park 入國家公園嘅環線）。", en:"START → W4 Mae Chok Luang is just +71 / −35 m — a gentle warm-up from PAO Park into the foothills of Doi Suthep-Pui National Park. The Goat Maps event guide describes the Suthep 20 as a loop from PAO Park into the national park." } },
+    { range:"KM 5 – 15", title:{zh:"主爬＋陡落到瀑布站", en:"The main climb, then a steep drop to the waterfall"}, body:{ zh:"W4 → A16 一段攀升 +855 m，佔全程爬升 78%；最高點 1,178 m 在 GPX 約 km 11.9，其後約 km 13.4 出現全程最斜落坡（約 −46%），陡落去 A16 Montha Than Waterfall（關門 11:00）。", en:"W4 → A16 climbs +855 m — 78% of the race's total ascent. The high point, 1,178 m, comes at about km 11.9 on the GPX, followed by the steepest downhill grade of the course (about −46%) at km 13.4, dropping into A16 Montha Than Waterfall (cut-off 11:00)." } },
+    { range:"KM 15 – 26", title:{zh:"落山回城", en:"Downhill back to the city"}, body:{ zh:"A16 → 終點 +168 / −539 m，以落山為主返 PAO Park，終點關門 13:30；尾段仍有 +168 m 起伏，唔係全程淨落。", en:"A16 → finish runs +168 / −539 m, mostly descending back to PAO Park (finish cut-off 13:30). The +168 m of climbing means the run-in is rolling rather than a pure descent." } }
+  ],
+  refs:[
+    { n:"大會官方 SUTHEP 20-DAY 賽事頁", u:"https://chiangmai.utmb.world/races/SUTHEP20-DAY" },
+    { n:"Goat Maps 賽事指南", u:"https://www.goatmaps.com/races/chiang-mai" }
+  ]
+},
+"suthep-night": {
+  intro:{ zh:"黃昏起步 — 主爬在入黑前後，落山全程靠頭燈", en:"A late-afternoon start — the climb straddles dusk, the descent is all by headlamp" },
+  items:[
+    { range:"KM 0 – 5", title:{zh:"黃昏熱身", en:"A dusk warm-up"}, body:{ zh:"16:00 起步，START → W4 Mae Chok Luang 只有 +71 / −35 m；日落約 17:46，呢段平緩位會喺天黑之前完成。", en:"Starting at 16:00, START → W4 Mae Chok Luang is just +71 / −35 m. With sunset at about 17:46, this gentle leg is covered in daylight." } },
+    { range:"KM 5 – 15", title:{zh:"入黑主爬＋陡落", en:"The main climb into darkness"}, body:{ zh:"W4 → A16 攀升 +855 m（全程爬升 78%），最高點 1,178 m 在 GPX 約 km 11.9；其後約 km 13.4 係全程最斜落坡（約 −46%），陡落去 A16 Montha Than Waterfall（關門 20:30）— 呢段落山會喺全黑環境完成。", en:"W4 → A16 climbs +855 m, 78% of the race's total ascent, topping out at 1,178 m (about km 11.9 on the GPX). The steepest downhill grade of the course (about −46%) follows at km 13.4, dropping into A16 Montha Than Waterfall (cut-off 20:30) — that descent is run in full darkness." } },
+    { range:"KM 15 – 26", title:{zh:"夜落回城", en:"The night descent home"}, body:{ zh:"A16 → 終點 +168 / −539 m，夜間以落山為主返 PAO Park，終點關門 23:00；尾段仍有 +168 m 起伏。", en:"A16 → finish runs +168 / −539 m, descending at night back to PAO Park (finish cut-off 23:00), with +168 m of rolling climbs still mixed in." } }
+  ],
+  refs:[
+    { n:"大會官方 SUTHEP 20-NIGHT 賽事頁", u:"https://chiangmai.utmb.world/races/SUTHEP20-NIGHT" },
+    { n:"Goat Maps 賽事指南", u:"https://www.goatmaps.com/races/chiang-mai" }
+  ]
+},
+"chedi20": {
+  intro:{ zh:"爬升藏喺後半段 — 過咗 W3 先開始真正上山", en:"The climbing hides in the second half — the real ascent starts after W3" },
+  items:[
+    { range:"KM 0 – 7", title:{zh:"湖邊平緩開段", en:"A gentle lakeside opening"}, body:{ zh:"START → W3 Huay Tueng Thao 只有 +171 / −134 m。大會官方介紹指 Chedi 20 係環繞 Doi Suthep 一圈嘅路線，經過 Mae Jok Luang Reservoir 同花園一帶，由 PAO Park 起步同返終點。W3 關門 09:30。", en:"START → W3 Huay Tueng Thao is just +171 / −134 m. The official race description calls the Chedi 20 a scenic loop around Doi Suthep past the Mae Jok Luang Reservoir and flower gardens, starting and finishing at PAO Park. W3 closes at 09:30." } },
+    { range:"KM 7 – 17", title:{zh:"後半主爬，登頂即落", en:"The second-half climb, then straight back down"}, body:{ zh:"W3 → 終點一段攀升 +495 m，佔全程爬升 74%；最高點 609 m 在 GPX 約 km 10.9，其後連續下降約 3.2 km、落約 286 m 先返平路，終點關門 12:30。唔好用開段嘅平緩嚟估後半段。", en:"W3 → finish climbs +495 m — 74% of the race's total ascent. The high point, 609 m, comes at about km 10.9 on the GPX, followed by a continuous descent of about 3.2 km dropping roughly 286 m before the course flattens out. The finish closes at 12:30. Do not judge the second half by the gentle opening." } }
+  ],
+  refs:[
+    { n:"大會官方 CHEDI 20 賽事頁", u:"https://chiangmai.utmb.world/races/chedi20" }
+  ]
+}
 };

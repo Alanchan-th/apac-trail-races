@@ -16,6 +16,7 @@
   --pale:#f3d9a8; --dateline:#eef5ea; --night:#1d2b4f; --red:#d92323;
   --cat100M:#d92323; --cat100K:#6fb327; --cat50K:#ef7d00; --cat20K:#ffcf00;
   --shadow:0 2px 14px rgba(34,51,29,.10);
+  --red-soft:#fbe7e4; --amber:#d96f16; --amber-soft:#fdeeda; --bib-yellow:#fdf6cf; --bib-yellow-line:#ddd096;
   --bar-h:52px;
 }
 *{box-sizing:border-box; margin:0; padding:0}
@@ -159,17 +160,18 @@ a.eyebrow:hover{text-decoration:underline}
   padding:.7rem .7rem .8rem; margin-top:.9rem}
 .mapwrap{position:relative; isolation:isolate; z-index:0; border-radius:.7rem; overflow:hidden; background:#e8efdb}
 .mapwrap svg{display:block; width:100%; height:auto}
+.glmapwrap .gpx-dl{position:absolute; right:10px; bottom:24px; z-index:800; display:inline-flex; align-items:center; gap:6px; padding:7px 12px; border-radius:999px; background:rgba(18,32,20,.82); color:#fff; font-size:12.5px; font-weight:700; letter-spacing:.02em; text-decoration:none; backdrop-filter:blur(3px); border:1px solid rgba(255,255,255,.25)}
+.glmapwrap .gpx-dl svg{width:14px; height:14px; flex:none}
 .maptools{position:absolute; top:.5rem; right:.5rem; z-index:5; display:flex; gap:.35rem}
 .maptools button{font-family:inherit; font-size:.75rem; font-weight:800; border:1px solid var(--line);
   background:rgba(255,255,255,.92); border-radius:.5rem; padding:.28rem .55rem; cursor:pointer; color:var(--ink)}
-.scrubrow{position:relative; display:flex; align-items:center; min-height:2rem; margin:.55rem 0 .3rem;
-  padding:.3rem .5rem; background:var(--surface2); border:1px solid var(--line); border-radius:.6rem}
-.scrubrow .hint{color:var(--muted); font-size:.83rem}
-.scrubrow .data{font-weight:800; font-size:.92rem; padding-right:2.2rem}
-.scrubrow .data b{font-family:"Barlow Semi Condensed",sans-serif; font-size:1.05rem}
-.scrubx{position:absolute; right:.45rem; top:50%; transform:translateY(-50%); width:1.7rem; height:1.7rem;
-  border-radius:50%; border:1px solid var(--line); background:#fff; font-size:.95rem; line-height:1;
-  cursor:pointer; display:none; align-items:center; justify-content:center; color:var(--ink2)}
+.scrubrow{position:relative; display:flex; align-items:center; justify-content:center; height:26px; box-sizing:border-box; margin:.55rem 0 .3rem; padding:1px 36px 3px 6px}
+.scrubrow .hint{color:var(--muted); font-size:.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.scrubrow .data{font-weight:800; font-size:.85rem; font-variant-numeric:tabular-nums; white-space:nowrap}
+.scrubrow .data b{font-family:"Barlow Semi Condensed",sans-serif; font-size:1rem}
+.scrubx{position:absolute; right:4px; top:50%; transform:translateY(-50%); width:22px; height:22px;
+  border-radius:50%; border:1px solid var(--line); background:var(--surface2); font-size:.8rem; line-height:1;
+  cursor:pointer; display:none; align-items:center; justify-content:center; color:var(--muted)}
 .scrubx.on{display:flex}
 .profwrap{position:relative; touch-action:none}
 .profwrap svg{display:block; width:100%; height:auto}
@@ -183,63 +185,96 @@ a.eyebrow:hover{text-decoration:underline}
   padding:.6rem .8rem; font-size:.92rem}
 .statusbox .stname{font-weight:900}
 .statusbox .cotred{color:var(--red); font-weight:800}
-.seggrid{display:grid; grid-template-columns:repeat(3,1fr); gap:.45rem; margin-top:.6rem}
+@keyframes sbIn{from{opacity:0; transform:translateY(5px)} to{opacity:1; transform:translateY(0)}}
+.statusbox.pop{animation:sbIn .18s ease-out}
+.seggrid{display:grid; grid-template-columns:repeat(3,1fr); gap:.45rem; margin-top:.6rem; grid-auto-rows:1fr}
 .segchip{font-family:inherit; text-align:left; background:var(--surface); border:1.5px solid var(--line);
-  border-radius:.7rem; padding:.42rem .55rem; cursor:pointer; min-height:60px}
-.segchip .sl{font-weight:800; font-size:.8rem; line-height:1.25}
-.segchip .sd{font-size:.75rem; color:var(--ink2); margin-top:.15rem}
-.segchip .sd b{font-family:"Barlow Semi Condensed",sans-serif; font-size:.9rem}
+  border-radius:.7rem; padding:.42rem .55rem; cursor:pointer; min-height:60px; height:100%; box-sizing:border-box;
+  display:flex; flex-direction:column; justify-content:center}
+.segchip .sl{font-weight:800; font-size:.8rem; line-height:1.25; white-space:nowrap}
+.segchip .sd{font-size:.7rem; color:var(--ink2); margin-top:.15rem; white-space:nowrap}
+.segchip .sd b{font-family:"Barlow Semi Condensed",sans-serif; font-size:.86rem}
+.segchip .sg{font-size:.72rem; color:var(--ink2); margin-top:.08rem; white-space:nowrap}
+.segchip .sg b{font-family:"Barlow Semi Condensed",sans-serif; font-size:.88rem}
 .segchip.sel{border-color:var(--prog); background:#eafbef}
-.stlist{margin-top:.6rem; display:flex; flex-direction:column; gap:.45rem}
-.strow{display:block; width:100%; text-align:left; font-family:inherit; background:var(--surface);
-  border:1.5px solid var(--line); border-radius:.8rem; padding:.55rem .75rem .65rem; cursor:pointer}
-.strow.sel{border-color:var(--prog); background:#f2fbf3}
-.strow .r1{display:flex; align-items:baseline; gap:.5rem; flex-wrap:wrap}
-.stcode{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; font-size:.95rem;
-  border-radius:.4rem; padding:.05rem .45rem; color:#fff; background:var(--green)}
-.stcode.night{background:var(--night)}
-.stname{font-weight:800}
-.stmeta{margin-left:auto; font-size:.85rem; color:var(--ink2); white-space:nowrap}
-.stmeta b{font-family:"Barlow Semi Condensed",sans-serif; font-size:1rem; color:var(--ink)}
-.stcot{color:var(--red); font-weight:800; font-size:.85rem}
-.stsvc{color:var(--muted); font-size:.82rem; margin-top:.15rem}
-.stbar{height:.32rem; background:var(--bg2); border-radius:99px; margin-top:.45rem; overflow:hidden}
-.stbar i{display:block; height:100%; background:var(--prog); border-radius:99px}
+.sttable-wrap{overflow-x:hidden; border:1px solid var(--line); border-radius:1rem; background:var(--surface); box-shadow:var(--shadow); margin-top:.6rem}
+.sttable{width:100%; border-collapse:collapse; font-size:.86rem; table-layout:fixed}
+.sttable th:nth-child(1){width:33%} .sttable th:nth-child(2){width:12%} .sttable th:nth-child(3){width:12%} .sttable th:nth-child(4){width:18%} .sttable th:nth-child(5){width:25%}
+.sttable th{text-align:left; font-size:.72rem; letter-spacing:.05em; color:var(--muted); font-weight:900; padding:.5rem .5rem; border-bottom:2px solid var(--line); background:var(--surface2); white-space:nowrap}
+.sttable td{padding:.48rem .5rem; border-bottom:1px solid var(--line); vertical-align:middle; overflow-wrap:break-word}
+.sttable tbody tr{cursor:pointer}
+.sttable tbody tr:last-child td{border-bottom:none}
+.sttable tbody tr:hover{background:#f4f9f3}
+.sttable tbody tr.sel{background:#eef7ee; box-shadow:inset 3px 0 0 var(--prog)}
+.sttable tbody tr:focus-visible{outline:2px solid var(--prog); outline-offset:-2px}
+.sttable .stcode{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; font-size:1rem; letter-spacing:.03em; color:#1c5c2e}
+.sttable .stname{font-weight:800}
+.sttable .num{font-variant-numeric:tabular-nums; white-space:nowrap}
+.sttable .num b{font-family:"Barlow Semi Condensed",sans-serif; font-size:1rem}
+.sttable .cot{color:var(--red); font-weight:800; font-variant-numeric:tabular-nums; white-space:nowrap}
+.sttable .cot .cd{display:block; font-weight:600; font-size:.72rem}
+.sttable .cot.none{color:var(--muted); font-weight:400}
+.sttable .svc{color:var(--muted); font-size:.78rem; line-height:1.45}
 
-/* collection */
-.collectframe{background:var(--surface); border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow); padding:.85rem .95rem; margin-top:.9rem}
-.collectframe .cf-ttl{font-weight:900; font-size:1.05rem}
-.collectframe .cf-sub{color:var(--muted); font-size:.85rem; font-weight:700}
-.cday{border-top:1px solid var(--line); margin-top:.6rem; padding-top:.6rem}
-.cday .cd-h{display:flex; gap:.5rem; align-items:baseline; font-weight:900}
-.cday .cd-h .dt{font-family:"Barlow Semi Condensed",sans-serif; color:var(--muted); font-weight:700}
-.cslot{display:flex; gap:.6rem; align-items:flex-start; padding:.4rem 0; border-top:1px dashed var(--line)}
-.cslot:first-of-type{border-top:none}
-.cslot .tm{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; font-size:1rem; white-space:nowrap; min-width:6.6rem}
-.cslot .tm .star{color:var(--accent-d)}
-.rtags{display:flex; flex-wrap:wrap; gap:.3rem}
-.rtag{font-size:.72rem; font-weight:800; border-radius:.4rem; padding:.16rem .45rem; color:#fff}
-.rtag.inkdark{color:#3d3200}
-.rtag.dim{opacity:.38}
-.cslot.mine{background:#fdf3e7; border-radius:.6rem; padding-left:.45rem; padding-right:.45rem}
-.clegend{margin-top:.6rem; font-size:.83rem; color:var(--ink2)}
-.cnote{margin-top:.45rem; font-size:.88rem}
-.bringlist{margin-top:.55rem; padding-left:1.15rem}
-.bringlist li{margin-top:.3rem}
+/* collection — 照公開卡定版（bib-week） */
+.bib-venue{font-weight:700; margin-top:.2rem}
+.bib-venue a{color:var(--accent-d)}
+.bib-week{border:1px solid var(--line); border-radius:1rem; background:var(--surface); box-shadow:var(--shadow); padding:.95rem; margin-top:.7rem}
+.bib-week-head{display:flex; justify-content:space-between; align-items:baseline; gap:.6rem}
+.bib-week-head .t{font-weight:900; font-size:1.06rem}
+.bib-week-head .d{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; color:#1c5c2e; font-size:1rem}
+.bib-cell{border:1px solid var(--line); border-radius:.75rem; padding:.6rem .75rem; margin-top:.6rem; background:#fff}
+.bib-cell.c-yellow{background:var(--bib-yellow); border-color:var(--bib-yellow-line)}
+.bib-cell-head{display:flex; gap:.5rem; align-items:baseline}
+.bib-cell-head .dw{font-weight:900; font-size:.95rem}
+.bib-cell-head .dn{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; color:#1c5c2e; font-size:.95rem}
+.bib-part{padding:.5rem 0 .15rem}
+.bib-part + .bib-part{border-top:1.5px solid var(--line); margin-top:.35rem}
+.bib-cell.c-yellow .bib-part + .bib-part{border-top-color:var(--bib-yellow-line)}
+.bib-when{margin-bottom:.35rem}
+.bib-when .tm{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; font-size:1rem; font-variant-numeric:tabular-nums}
+.bib-when .star{color:var(--amber); font-size:1rem}
+.bib-tags{display:flex; flex-wrap:wrap; gap:.3rem}
+.race-tag{display:inline-block; font-size:.72rem; font-weight:800; border-radius:.4rem; padding:.16rem .45rem; color:#fff; letter-spacing:.02em}
+.race-tag.inkdark{color:#3a2f00}
+.bib-legend{margin-top:.6rem; font-size:.85rem; color:var(--ink2)}
+.bib-legend .star{color:var(--amber); font-weight:900}
+.bib-brief{margin-top:.6rem; background:var(--surface2); border:1px solid var(--line); border-radius:.8rem; padding:.65rem .9rem; font-size:.9rem}
+.bring{margin-top:.6rem; background:var(--surface); border:1px solid var(--line); border-radius:.8rem; padding:.7rem .95rem; box-shadow:var(--shadow)}
+.bring h3{font-size:.98rem; font-weight:900}
+.bring ul{margin-top:.4rem; padding-left:1.15rem}
+.bring li{margin-top:.3rem; font-size:.9rem}
 
-/* phases + gear */
-.phase{background:var(--surface); border:1px solid var(--line); border-radius:.9rem; box-shadow:var(--shadow); padding:.75rem .95rem; margin-top:.6rem}
-.phase .pr{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; color:var(--accent-d); letter-spacing:.06em}
-.phase .pt{font-weight:900; font-size:1.02rem}
-.phase .pb{color:var(--ink2); margin-top:.2rem; font-size:.93rem}
-.gearlist{list-style:none; counter-reset:g; margin-top:.4rem}
-.gearlist li{background:var(--surface); border:1px solid var(--line); border-radius:.8rem; padding:.6rem .85rem; margin-top:.45rem; box-shadow:var(--shadow)}
-.gearlist .gn{font-weight:800}
-.gearlist .gn::before{counter-increment:g; content:counter(g) ". "; color:var(--muted); font-family:"Barlow Semi Condensed",sans-serif}
-.gearlist .gd{color:var(--ink2); font-size:.88rem; margin-top:.15rem}
-.dqbadge{display:inline-block; background:var(--red); color:#fff; font-size:.7rem; font-weight:800;
-  border-radius:.35rem; padding:.1rem .45rem; margin-left:.45rem; vertical-align:.12em}
-.gearnote{background:var(--surface2); border:1px solid var(--line); border-radius:.8rem; padding:.65rem .9rem; margin-top:.6rem; font-size:.88rem; color:var(--ink2)}
+/* phases + gear — 照公開卡定版 */
+.ph-sub{font-weight:900; font-size:1.02rem}
+.phases{display:grid; grid-template-columns:1fr 1fr; gap:.6rem; margin-top:.7rem}
+@media (max-width:640px){ .phases{grid-template-columns:1fr} }
+.phase{border:1px solid var(--line); border-radius:.9rem; background:var(--surface); padding:.8rem .95rem; box-shadow:var(--shadow)}
+.phase .km{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; color:var(--amber); font-size:.95rem; letter-spacing:.06em}
+.phase h3{font-size:1rem; font-weight:900; margin-top:.1rem}
+.phase p{font-size:.85rem; color:var(--muted); margin-top:.25rem; line-height:1.55}
+.ph-refs{margin-top:.7rem; font-size:.75rem; color:var(--muted)}
+.ph-refs a{color:var(--accent-d); font-weight:700}
+.gear-figure{margin-top:.7rem}
+.gear-figure a{display:block; border-radius:.9rem; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow)}
+.gear-figure img{width:100%; display:block}
+.gear-figure figcaption{font-size:.75rem; color:var(--muted); margin-top:.35rem; text-align:center}
+.gear-detail-cap{font-size:.83rem; color:var(--muted); margin-top:1rem; font-weight:700}
+.gear-details{margin-top:.5rem; border:1px solid var(--line); border-radius:.9rem; background:var(--surface); box-shadow:var(--shadow); overflow:hidden}
+.gear-details summary{display:flex; justify-content:space-between; align-items:center; gap:.6rem; padding:.8rem .95rem; cursor:pointer; font-weight:900; font-size:.95rem; list-style:none}
+.gear-details summary::-webkit-details-marker{display:none}
+.gear-details .chev{color:var(--muted); transition:transform .2s}
+.gear-details[open ] .chev{transform:rotate(180deg)}
+.gear-list{list-style:none; counter-reset:gi; padding:.1rem .95rem .4rem}
+.gear-list li{display:flex; gap:.6rem; padding:.5rem 0; border-top:1px solid var(--line); align-items:flex-start}
+.gear-list li:first-child{border-top:none}
+.gear-list li::before{counter-increment:gi; content:counter(gi); flex:none; width:1.35rem; height:1.35rem; border-radius:50%; background:#e2efdb; color:#1c5c2e; font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; font-size:.82rem; display:flex; align-items:center; justify-content:center; margin-top:.05rem}
+.gear-list .gtx{min-width:0}
+.gear-list b{font-size:.92rem}
+.gear-list .d{display:block; font-size:.83rem; color:var(--muted); margin-top:.1rem; line-height:1.5}
+.gear-list .dq{display:inline-block; margin-left:.45rem; background:var(--red-soft); color:var(--red); font-size:.7rem; font-weight:800; border-radius:.35rem; padding:.08rem .4rem; vertical-align:.1em}
+.penalty{margin:.4rem .95rem .3rem; border:1px solid #eec9c3; background:#fdf1ef; border-radius:.65rem; padding:.6rem .75rem; font-size:.83rem; color:var(--ink2); line-height:1.6}
+.gear-rec{margin:.5rem .95rem .8rem; font-size:.83rem; color:var(--ink2); line-height:1.6}
 .routedesc{background:var(--surface); border:1px solid var(--line); border-radius:.9rem; box-shadow:var(--shadow); padding:.75rem .95rem; margin-top:.9rem; color:var(--ink2)}
 .backlink{display:inline-block; margin-top:1rem; font-weight:700; color:var(--accent-d); text-decoration:none}
 
@@ -530,6 +565,7 @@ function boldTemps(s){
 var WX_ICON_SVG = '<svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#f3d9a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="3.1"/><path d="M8 2.2v1.5M2.2 8h1.5M3.9 3.9l1.1 1.1M12.1 3.9L11 5"/><path d="M10.2 20.6h7a3.7 3.7 0 0 0 .8-7.3 5.1 5.1 0 0 0-9.9 1.1 3.3 3.3 0 0 0 2.1 6.2z"/></svg>';
 var HW_ICON_SVG = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v1.5"/><path d="M4.6 5.6l1 1"/><path d="M3 10h1.5"/><path d="M14.5 4.4a4.2 4.2 0 1 0 1.2 6.7"/><path d="M7 21h10.5a3.5 3.5 0 0 0 .6-6.95 5 5 0 0 0-9.6 1.2A3.2 3.2 0 0 0 7 21z"/></svg>';
 var CD_CAL_SVG = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18"/><path d="M8 2.5v4"/><path d="M16 2.5v4"/></svg>';
+var GPX_DL_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v11"/><path d="M7 10.5 12 15l5-4.5"/><path d="M4 19.5h16"/></svg>';
 var FIT_SVG = '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>';
 function boldTempsB(s){
   return esc(s).replace(/(\d+(?:–|-)\d+°C)/g, "<b>$1</b>");
@@ -774,80 +810,106 @@ function segChipsHTML(race, geo){
     if (race.id==="hmong-day" && HMONG_SEG[key]){ g=HMONG_SEG[key].g; l=HMONG_SEG[key].l; }
     else if (geo){ for (var j=0;j<geo.segs.length;j++){ if (geo.segs[j].from===s0.code && geo.segs[j].to===s1.code){ g=geo.segs[j].gain; l=geo.segs[j].loss; } } }
     h += '<button type="button" class="segchip'+(state.sel===s1.code?" sel":"")+'" data-seg="'+s1.code+'">' +
-      '<span class="sl">'+esc(s0.code)+" → "+esc(s1.code)+'</span><br><span class="sd"><b>'+km+'</b> km' +
-      (g!=null ? ' · <b>+'+g+'</b> −'+l : "") + "</span></button>";
+      '<span class="sl">'+esc(s0.code)+" → "+esc(s1.code)+'</span><span class="sd"><b>'+km+'</b> km</span>' +
+      (g!=null ? '<span class="sg"><b>+'+g+'</b> −'+l+"</span>" : "") + "</button>";
   }
   return h + "</div>";
 }
 function stationsHTML(race, geo){
-  var total = parseFloat(race.dist) || 1;
-  var h = '<div class="stlist">';
+  var h = '<div class="sttable-wrap"><table class="sttable"><thead><tr>' +
+    "<th>" + (LANG==="en" ? "Station" : "站") + '</th><th>' + (LANG==="en" ? "Distance" : "距離 km") + '</th><th>' + (LANG==="en" ? "Elevation" : "海拔 m") + '</th><th>' + (LANG==="en" ? "Cut-off" : "關門時間") + '</th><th>' + (LANG==="en" ? "Services" : "服務") + "</th></tr></thead><tbody>";
   race.stations.forEach(function(st){
     var gs = geo ? geoStation(geo, st.code) : null;
-    h += '<button type="button" class="strow'+(state.sel===st.code?" sel":"")+'" data-st="'+st.code+'">' +
-      '<span class="r1"><span class="stcode'+(race.version==="NIGHT"?" night":"")+'" style="'+(race.version==="NIGHT"?"":"background:"+catColor(race))+'">'+esc(st.code)+'</span>' +
-      '<span class="stname">'+esc(st.name)+'</span>' +
-      '<span class="stmeta"><b>'+st.km+'</b> km' + (gs ? ' · <b>'+Math.round(gs.ele)+'</b> m' : "") + "</span></span>" +
-      (st.cot ? '<span class="stcot">'+esc(cotText(st))+"</span>" : "") +
-      (st.svc && st.svc.length ? '<span class="stsvc">'+esc(svcText(st))+"</span>" : "") +
-      '<span class="stbar"><i style="width:'+Math.min(100, st.km/total*100)+'%"></i></span></button>';
+    var cotCell = "—", cotCls = "cot none";
+    if (st.cot){
+      cotCls = "cot";
+      var cd = LANG==="en" ? (st.cotDayEn || st.cotDay) : st.cotDay;
+      cotCell = esc(st.cot) + (cd ? ' <span class="cd">(' + esc(cd) + ")</span>" : "");
+    }
+    h += '<tr data-st="' + st.code + '" tabindex="0"' + (state.sel===st.code ? ' class="sel"' : "") + ">" +
+      '<td><span class="stcode">' + esc(st.code) + '</span> <span class="stname">' + esc(st.name) + "</span></td>" +
+      '<td class="num"><b>' + st.km + "</b></td>" +
+      '<td class="num">' + (gs ? "<b>" + Math.round(gs.ele) + "</b>" : "—") + "</td>" +
+      '<td class="' + cotCls + '">' + cotCell + "</td>" +
+      '<td class="svc">' + (st.svc && st.svc.length ? esc(svcText(st)) : "—") + "</td></tr>";
   });
-  return h + "</div>";
+  return h + "</tbody></table></div>";
 }
 function collectHTML(race){
-  var h = '<section id="sec-bib"><h2 class="secttl">' + (LANG==="en" ? "Race pack collection" : "領選手包") + ' <span class="en">Bib Collection</span></h2>';
-  h += '<div class="collectframe"><div class="cf-ttl">'+esc(L(COLLECT_W2.frameTitle))+'</div><div class="cf-sub">'+esc(L(COLLECT_W2.frameSub))+" · "+esc(L(COLLECT_W2.venue))+"</div>";
-  COLLECT_W2.days.forEach(function(d){
-    h += '<div class="cday"><div class="cd-h"><span>'+esc(L(d.dow))+'</span><span class="dt">'+esc(d.date)+"</span></div>";
+  var h = '<section id="sec-bib"><h2 class="secttl">' + (LANG==="en" ? "Race pack collection" : "領選手包（號碼布）") + ' <span class="en">Race Pack Collection</span></h2>';
+  var vu = MAPS_URL["Chiang Mai PAO Park"];
+  h += '<p class="bib-venue">' + (LANG==="en" ? "Venue: " : "地點：") + (vu ? '<a href="' + vu + '" target="_blank" rel="noopener">Chiang Mai PAO Park</a>' : "Chiang Mai PAO Park") + "</p>";
+  h += '<div class="bib-week"><div class="bib-week-head"><span class="t">' + esc(L(COLLECT_W2.frameTitle)) + '</span><span class="d">' + esc(L(COLLECT_W2.frameSub)) + "</span></div>";
+  COLLECT_W2.days.forEach(function(d, di){
+    h += '<div class="bib-cell' + (di % 2 === 1 ? " c-yellow" : "") + '"><div class="bib-cell-head"><span class="dw">' + esc(L(d.dow)) + '</span><span class="dn">' + esc(d.date) + "</span></div>";
     d.slots.forEach(function(sl){
-      var mine = sl.races.indexOf(race.id) >= 0;
-      h += '<div class="cslot'+(mine?" mine":"")+'"><span class="tm">'+esc(sl.time)+(sl.star?' <span class="star">★</span>':"")+'</span><span class="rtags">';
+      h += '<div class="bib-part"><div class="bib-when"><span class="tm">' + esc(sl.time) + "</span>" + (sl.star ? ' <span class="star">★</span>' : "") + '</div><div class="bib-tags">';
       sl.races.forEach(function(rid){
         var rr = raceById(rid); if (!rr) return;
-        h += '<span class="rtag'+(catInkFor(rr)==="#3d3200"?" inkdark":"")+(rid===race.id?"":" dim")+'" style="background:'+catColor(rr)+'">'+esc(raceTag(rr))+"</span>";
+        h += '<span class="race-tag' + (catInkFor(rr)==="#3d3200" ? " inkdark" : "") + '" style="background:' + catColor(rr) + '">' + esc(raceTag(rr)) + "</span>";
       });
-      h += "</span></div>";
+      h += "</div></div>";
     });
     h += "</div>";
   });
-  h += '<div class="clegend">'+esc(L(COLLECT_W2.legend))+'</div>';
-  h += '<div class="cnote">'+esc(L(COLLECT_W2.briefing))+"</div>";
-  h += '<div class="cnote"><b>'+esc(L(COLLECT_W2.bringTitle))+'</b><ul class="bringlist">';
-  COLLECT_W2.bring.forEach(function(b){ h += "<li>"+esc(L(b))+"</li>"; });
-  h += "</ul></div></div></section>";
+  h += "</div>";
+  h += '<p class="bib-legend"><span class="star">★</span> ' + esc(L(COLLECT_W2.legend).replace(/^★\s*/, "")) + "</p>";
+  var bt = L(COLLECT_W2.briefing), bi = bt.search(/[：:]/);
+  h += '<div class="bib-brief">' + (bi > 0 ? "<b>" + esc(bt.slice(0, bi+1)) + "</b>" + esc(bt.slice(bi+1)) : esc(bt)) + "</div>";
+  h += '<div class="bring"><h3>' + esc(L(COLLECT_W2.bringTitle)) + "</h3><ul>";
+  COLLECT_W2.bring.forEach(function(b){
+    var t = L(b), parts = t.split(" — ");
+    h += "<li>" + (parts.length > 1 ? "<b>" + esc(parts[0]) + "</b> — " + esc(parts.slice(1).join(" — ")) : esc(t)) + "</li>";
+  });
+  h += "</ul></div></section>";
   return h;
 }
 function gearHTML(race){
-  var h = '<section id="sec-gear"><h2 class="secttl">' + (LANG==="en" ? "Mandatory gear" : "強制裝備") + ' <span class="en">Mandatory Gear</span></h2>';
-  if (race.id === "hmong-day"){
-    h += '<p class="small muted">' + (LANG==="en" ? "Official list (50K category) · checked during the race" : "官方清單（50K 組別）· 比賽期間會檢查") + '</p><ol class="gearlist">';
+  var isH = race.id === "hmong-day";
+  var n = isH ? HMONG_GEAR_DETAIL.length : (race.gear ? race.gear.length : 0);
+  var h = '<section id="sec-gear"><h2 class="secttl">' + (LANG==="en" ? "Mandatory gear" : "官方強制裝備") + ' <span class="en">Mandatory Gear — ' + n + ' Items</span></h2>';
+  h += '<p class="small muted">' + (LANG==="en" ? "Official list (" + race.cat + " category) · checked during the race" : "官方清單（" + race.cat + " 組別）· 比賽期間會檢查") + "</p>";
+  var gim = (typeof GEAR_IMG !== "undefined") ? GEAR_IMG[race.id] : null;
+  if (gim){
+    var gu = GEAR_IMG_BASE + gim.f + "?_a=ATADJAA0";
+    h += '<figure class="gear-figure"><a href="' + gu + '" target="_blank" rel="noopener"><img src="' + gu + '" alt="' + (LANG==="en" ? "Official 2026 mandatory gear chart — " : "大會官方 2026 強制裝備圖 — ") + gim.label + '" loading="lazy"></a>' +
+      "<figcaption>" + (LANG==="en" ? "Official 2026 mandatory gear chart (" + gim.label + ") · tap to enlarge" : "大會官方 2026 強制裝備圖（" + gim.label + "）· 撳圖放大") + "</figcaption></figure>";
+  }
+  h += '<p class="gear-detail-cap">' + (LANG==="en" ? "Full list in text — item-by-item from the official chart (verified)" : "文字版明細 — 官方圖逐項文字對照（已核實）") + "</p>";
+  h += '<details class="gear-details"><summary><span>' + (LANG==="en" ? "Gear list (" + n + " items)" : "裝備明細（" + n + " 項）") + (isH ? (LANG==="en" ? " + penalties" : "＋ 罰則") : "") + '</span><span class="chev">▾</span></summary><ol class="gear-list">';
+  if (isH){
     HMONG_GEAR_DETAIL.forEach(function(g){
-      h += "<li><span class=\"gn\">" + esc(LANG==="en" ? g.en : g.zh) + "</span>" +
-        (g.dq ? '<span class="dqbadge">' + (LANG==="en" ? "Missing = DQ" : "缺失 = 即時 DQ") + "</span>" : "") +
-        '<div class="gd">' + esc(L(g.desc)) + "</div></li>";
+      h += '<li><span class="gtx"><b>' + esc(LANG==="en" ? g.en : g.zh) + "</b>" +
+        (g.dq ? '<span class="dq">' + (LANG==="en" ? "Missing = instant DQ" : "缺失 = 即時 DQ") + "</span>" : "") +
+        '<span class="d">' + esc(L(g.desc)) + "</span></span></li>";
     });
     h += "</ol>";
-    h += '<div class="gearnote">' + esc(L(HMONG_GEAR_NOTES.penalties)) + "</div>";
-    h += '<div class="gearnote">' + esc(L(HMONG_GEAR_NOTES.recommended)) + "</div>";
+    h += '<div class="penalty">' + esc(L(HMONG_GEAR_NOTES.penalties)) + "</div>";
+    h += '<p class="gear-rec">' + esc(L(HMONG_GEAR_NOTES.recommended)) + "</p>";
   } else if (race.gear){
-    h += '<p class="small muted">' + (LANG==="en" ? "Official list for this category · checked during the race" : "官方清單（本組別）· 比賽期間會檢查") + '</p><ol class="gearlist">';
     race.gear.forEach(function(k){
       var g = GI[k]; if (!g) return;
-      h += '<li><span class="gn">' + esc(L(g)) + "</span></li>";
+      h += '<li><span class="gtx"><b>' + esc(L(g)) + "</b></span></li>";
     });
     h += "</ol>";
-    h += '<div class="gearnote">' + (LANG==="en"
+    h += '<p class="gear-rec">' + (LANG==="en"
       ? "Hot / cold weather kit lists are part of the mandatory gear; the organiser confirms which set applies 1–2 days before the race."
-      : "冷／熱天氣附加裝備屬強制裝備一部分，大會將於賽前 1–2 日確認啟用邊套。") + "</div>";
+      : "冷／熱天氣附加裝備屬強制裝備一部分，大會將於賽前 1–2 日確認啟用邊套。") + "</p>";
   }
-  return h + "</section>";
+  return h + "</details></section>";
 }
-function phasesHTML(){
-  var h = '<section id="sec-phases"><h2 class="secttl">' + (LANG==="en" ? "How the race unfolds" : "賽道點讀") + ' <span class="en">Race Read</span></h2>';
-  h += '<p style="font-weight:900; font-size:1.02rem">' + esc(L(HMONG_PHASES.intro)) + "</p>";
-  HMONG_PHASES.items.forEach(function(p){
-    h += '<div class="phase"><span class="pr">'+esc(p.range)+'</span><div class="pt">'+esc(L(p.title))+'</div><div class="pb">'+esc(L(p.body))+"</div></div>";
+function phasesHTML(race){
+  var ph = race.id === "hmong-day" ? HMONG_PHASES : (typeof PHASES !== "undefined" ? PHASES[race.id] : null);
+  if (!ph) return "";
+  var h = '<section id="sec-phases"><h2 class="secttl">' + (LANG==="en" ? "How the race unfolds" : "賽道點讀") + ' <span class="en">' + (LANG==="en" ? "Course Notes" : "How the Race Unfolds") + "</span></h2>";
+  h += '<p class="ph-sub">' + esc(L(ph.intro)) + '</p><div class="phases">';
+  ph.items.forEach(function(p){
+    h += '<div class="phase"><div class="km">' + esc(p.range) + '</div><h3>' + esc(L(p.title)) + "</h3><p>" + esc(L(p.body)) + "</p></div>";
   });
+  h += "</div>";
+  if (ph.refs && ph.refs.length){
+    h += '<p class="ph-refs">' + (LANG==="en" ? "Course-note references: " : "賽道點讀參考：") + ph.refs.map(function(r){ return '<a href="' + r.u + '" target="_blank" rel="noopener">' + esc(r.n) + "</a>"; }).join(" · ") + "</p>";
+  }
   return h + "</section>";
 }
 
@@ -868,7 +930,7 @@ function viewRace(id){
   var nav = [["sec-route", LANG==="en"?"Route":"路線圖"]];
   if (race.stations) nav.push(["sec-stations", LANG==="en"?"Aid stations":"補給站"]);
   if (race.week === 2) nav.push(["sec-bib", LANG==="en"?"Bib collection":"領選手包"]);
-  if (race.id === "hmong-day") nav.push(["sec-phases", LANG==="en"?"Race read":"賽道點讀"]);
+  if (race.id === "hmong-day" || (typeof PHASES !== "undefined" && PHASES[race.id])) nav.push(["sec-phases", LANG==="en"?"Race read":"賽道點讀"]);
   if (race.gear || race.id === "hmong-day") nav.push(["sec-gear", LANG==="en"?"Mandatory gear":"強制裝備"]);
   /* cover — 跟公開卡：倒數膠囊釘封面右上角、天氣框入封面成條連結 */
   var img = RACEIMG[race.id];
@@ -927,6 +989,7 @@ function viewRace(id){
       '<button type="button" id="mode3d" aria-pressed="false" aria-label="' + (LANG==="en" ? "Show 3D terrain map" : "顯示 3D 地形地圖") + '">3D</button></div>' +
       '<button type="button" id="labelsToggle" class="labels-toggle" aria-pressed="true" aria-label="' + (LANG==="en" ? "Hide station labels" : "隱藏地圖站名標籤") + '"><span id="labelsToggleTxt">' + (LANG==="en" ? "Labels: on" : "標籤：開") + '</span></button>' +
       '<button type="button" id="fitRoute" class="fit-route" disabled aria-label="' + (LANG==="en" ? "Show the whole route" : "顯示全程路線：置中返並顯示成條比賽路線") + '" title="' + (LANG==="en" ? "Show the whole route" : "顯示全程路線") + '">' + FIT_SVG + '</button>' +
+      '<a class="gpx-dl" href="' + GPX_URLS[race.geo] + '" download>' + GPX_DL_SVG + (LANG==="en" ? "Offline GPX" : "下載離線 GPX") + '</a>' +
       '<div class="map-loading" id="mapLoading"><span id="mapLoadingTxt">' + (LANG==="en" ? "Loading map…" : "載入緊地圖…") + '</span></div>' +
       '<div class="map-fallback" id="mapFallback" style="display:none"></div></div>';
     h += '<div class="scrubrow"><span class="hint" id="scrubHint">' + (LANG==="en" ? "Drag to see distance · elevation · gradient (200 m average) · pinch to zoom" : "拖動睇距離・海拔・斜度（200 米平均）・雙指放大") + '</span>' +
@@ -941,9 +1004,7 @@ function viewRace(id){
     h += '<div class="legend"><span><span class="sw" style="background:#93a583"></span>' + (LANG==="en" ? "Official GPX course" : "官方 GPX 全程軌跡") + '</span>·<span><span class="sw" style="background:#2fbf5a"></span>' + (LANG==="en" ? "Selected section" : "所選路段") + '</span>·<span style="color:#d92323; font-weight:700">' + (LANG==="en" ? "Red = cut-off time (COT)" : "紅字 = 關門時間（COT）") + "</span></div>";
     h += '<div class="statusbox" id="statusBox"></div>';
     h += segChipsHTML(race, geo);
-    h += '<div class="srcmicro">' + (LANG==="en" ? "Route & elevation: official race GPX (" : "路線及攀升：大會官方 GPX（") +
-      '<a href="'+GPX_URLS[race.geo]+'" target="_blank" rel="noopener">' + (LANG==="en" ? "download" : "下載連結") + "</a>" +
-      (LANG==="en" ? ") · Cut-offs: official time chart · Measured course " : "）· 關門時間：官方時間表 · GPX 實測全程 ") + geo.totalKm + " km</div>";
+    h += '<div class="srcmicro">' + (LANG==="en" ? "Route & elevation: official race GPX · Cut-offs: official time chart · Measured course " : "路線及攀升：大會官方 GPX · 關門時間：官方時間表 · GPX 實測全程 ") + geo.totalKm + " km</div>";
     h += "</section>";
     h += '<section id="sec-stations"><h2 class="secttl">' + (LANG==="en" ? "Aid stations & cut-offs" : "補給站與關門時間") + ' <span class="en">Aid Stations & Cut-offs</span></h2>' + stationsHTML(race, geo) + "</section>";
   } else if (race.desc){
@@ -951,7 +1012,7 @@ function viewRace(id){
       (race.stNote ? "<br>" + esc(L(race.stNote)) : "") + "</div>";
   }
   if (race.week === 2) h += collectHTML(race);
-  if (race.id === "hmong-day") h += phasesHTML();
+  h += phasesHTML(race);
   if (race.gear || race.id === "hmong-day") h += gearHTML(race);
   h += '<a class="backlink" href="#/event/chiangmai-utmb">← ' + (LANG==="en" ? "Back to event overview" : "返清邁總覽") + "</a></div>";
   app.innerHTML = h; foot.innerHTML = footHTML();
@@ -1323,9 +1384,9 @@ function bindRace(race, geo){
     for (var j=0;j<segs.length;j++){
       segs[j].className = "segchip" + (state.sel===segs[j].getAttribute("data-seg") ? " sel" : "");
     }
-    var rows = document.querySelectorAll(".strow");
+    var rows = document.querySelectorAll("tr[data-st]");
     for (var k=0;k<rows.length;k++){
-      rows[k].className = "strow" + (state.sel===rows[k].getAttribute("data-st") ? " sel" : "");
+      rows[k].className = (state.sel===rows[k].getAttribute("data-st") ? "sel" : "");
     }
   }
   function queueDraw(){ if (!rafPend){ rafPend = true; requestAnimationFrame(function(){ rafPend=false; draw(); }); } }
@@ -1333,10 +1394,14 @@ function bindRace(race, geo){
     state.sel = (state.sel === code) ? null : code;
     if (state.sel) state.scrub = null;
     draw();
+    if (state.sel && statusBox){ statusBox.classList.remove("pop"); void statusBox.offsetWidth; statusBox.classList.add("pop"); }
     if (state.sel && origin !== "map") easeMapTo(code);
   }
-  var stBtns = document.querySelectorAll(".strow");
-  for (var i=0;i<stBtns.length;i++) stBtns[i].addEventListener("click", function(){ selectStation(this.getAttribute("data-st")); });
+  var stBtns = document.querySelectorAll("tr[data-st]");
+  for (var i=0;i<stBtns.length;i++){
+    stBtns[i].addEventListener("click", function(){ selectStation(this.getAttribute("data-st")); });
+    stBtns[i].addEventListener("keydown", function(e){ if (e.key==="Enter" || e.key===" "){ e.preventDefault(); selectStation(this.getAttribute("data-st")); } });
+  }
   var segBtns = document.querySelectorAll("[data-seg]");
   for (var j=0;j<segBtns.length;j++) segBtns[j].addEventListener("click", function(){ selectStation(this.getAttribute("data-seg")); });
   scrubX.addEventListener("click", function(){ state.scrub = null; draw(); });
