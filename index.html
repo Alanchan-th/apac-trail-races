@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>清邁越野賽事總覽 · Chiang Mai Thailand by UTMB</title>
+<meta name="description" content="清邁 Thailand by UTMB 賽事總覽：12 場比賽逐場賽事頁（路線圖、攀升圖、補給站、關門時間、強制裝備），資料核實自大會官方來源。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#edf2e2; --bg2:#e2ead0; --surface:#ffffff; --surface2:#f5f8ec;
+  --ink:#22331d; --ink2:#3c4c34; --muted:#6d7a61; --line:#d5dec2;
+  --accent:#e8762d; --accent-d:#c85f1d; --green:#2e7d46; --prog:#2fbf5a;
+  --pale:#f3d9a8; --dateline:#eef5ea; --night:#1d2b4f; --red:#d92323;
+  --cat100M:#d92323; --cat100K:#6fb327; --cat50K:#ef7d00; --cat20K:#ffcf00;
+  --shadow:0 2px 14px rgba(34,51,29,.10);
+  --red-soft:#fbe7e4; --amber:#d96f16; --amber-soft:#fdeeda; --bib-yellow:#fdf6cf; --bib-yellow-line:#ddd096;
+  --bar-h:52px;
+}
+*{box-sizing:border-box; margin:0; padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans TC",system-ui,-apple-system,"PingFang HK","Microsoft JhengHei",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.55; -webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block; max-width:100%}
+.bc{font-family:"Barlow Semi Condensed","Noto Sans TC",sans-serif}
+
+/* ---------- site bar ---------- */
+.sitebar{position:sticky; top:0; z-index:500; height:var(--bar-h);
+  display:flex; align-items:center; gap:.6rem; padding:0 .9rem;
+  background:rgba(237,242,226,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+.sitebar .logo{font-weight:900; font-size:1.02rem; letter-spacing:.02em; text-decoration:none; white-space:nowrap}
+.sitebar .logo small{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; color:var(--muted); letter-spacing:.14em; font-size:.68rem; display:block; line-height:1; margin-top:.05rem}
+.sitebar .sp{flex:1}
+.langbtn{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; letter-spacing:.08em;
+  border:1.5px solid var(--ink2); background:transparent; color:var(--ink); border-radius:999px;
+  padding:.28rem .8rem; font-size:.85rem; cursor:pointer}
+.langbtn:active{transform:scale(.96)}
+
+.crumbs{max-width:1080px; margin:0 auto; padding:.55rem .9rem 0; font-size:.8rem; color:var(--muted);
+  display:flex; flex-wrap:wrap; gap:.35rem; align-items:center}
+.crumbs a{color:var(--ink2); text-decoration:none; font-weight:700}
+.crumbs .sep{opacity:.6}
+.wrap{max-width:1080px; margin:0 auto; padding:0 .9rem 2.2rem}
+
+/* ---------- cover ---------- */
+.cover{position:relative; border-radius:1.1rem; overflow:hidden; margin-top:.7rem; box-shadow:var(--shadow);
+  min-height:300px; display:flex; flex-direction:column; justify-content:flex-end; isolation:isolate}
+.cover .bgimg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2}
+.cover::after{content:""; position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(180deg, rgba(16,26,14,.18) 0%, rgba(16,26,14,.06) 34%, rgba(16,26,14,.66) 78%, rgba(16,26,14,.86) 100%)}
+.cover .cin{padding:1rem 1.05rem 1.05rem; color:#fff}
+.eyebrow{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; text-transform:uppercase;
+  letter-spacing:.18em; font-size:.78rem; color:var(--pale); text-decoration:none; display:inline-block}
+a.eyebrow:hover{text-decoration:underline}
+.cover h1{font-weight:900; line-height:1.05; letter-spacing:.01em; margin:.35rem 0 .1rem;
+  font-size:clamp(1.7rem, 7.2vw, 3rem); white-space:nowrap}
+.cover h1 .suffix{font-size:.52em; font-weight:900; letter-spacing:.06em; vertical-align:.32em; margin-left:.35em}
+.cover h1.long{font-size:clamp(1.25rem, 5.6vw, 2.2rem)}
+.dateline{color:var(--dateline); font-weight:500; font-size:15px; margin-top:.55rem}
+.venueline{margin-top:.15rem; font-size:.92rem}
+.venueline a{color:var(--pale); text-decoration:underline; text-decoration-color:rgba(243,217,168,.45); text-underline-offset:3px}
+.pills{display:flex; flex-wrap:wrap; gap:.45rem; margin-top:.7rem}
+.cdpill{background:var(--accent); color:#fff; font-weight:700; font-size:.83rem;
+  border-radius:999px; padding:.34rem .8rem; box-shadow:0 2px 8px rgba(0,0,0,.25); white-space:nowrap}
+.cdpill b{font-family:"Barlow Semi Condensed",sans-serif; font-size:1.02rem; letter-spacing:.03em}
+.cdpill.done{background:#5c6b52}
+.cdpill.live{background:var(--red)}
+.statchips{display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.6rem}
+.statchip{background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); color:#fff;
+  border-radius:.55rem; padding:.22rem .6rem; font-size:.82rem; font-weight:700; backdrop-filter:blur(3px)}
+.statchip b{font-family:"Barlow Semi Condensed",sans-serif; font-size:.98rem}
+
+/* ---------- generic blocks ---------- */
+.secttl{font-size:1.28rem; font-weight:900; margin:1.5rem 0 .6rem; display:flex; align-items:baseline; gap:.55rem}
+.secttl .en{font-family:"Barlow Semi Condensed",sans-serif; font-size:.8rem; font-weight:700; letter-spacing:.16em; color:var(--muted); text-transform:uppercase}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow)}
+.muted{color:var(--muted)}
+.small{font-size:.82rem}
+
+/* weather */
+.wxbox{display:block; text-decoration:none; background:var(--surface); border:1px solid var(--line);
+  border-radius:1rem; box-shadow:var(--shadow); padding:.85rem 1rem; margin-top:.9rem}
+.wxrow{display:flex; gap:.8rem; align-items:flex-start}
+.wxrow + .wxrow{border-top:1px dashed var(--line); margin-top:.7rem; padding-top:.7rem}
+.wxico{font-size:1.5rem; line-height:1.2}
+.wxmain{flex:1; min-width:0}
+.wxarea{display:flex; align-items:center; gap:.5rem; font-weight:900; font-size:.98rem}
+.wxlink{margin-left:auto; flex:none; font-size:.78rem; font-weight:700; color:var(--accent-d);
+  border:1.5px solid var(--accent); border-radius:999px; padding:.14rem .6rem; white-space:nowrap}
+.wxcond{font-weight:700; color:var(--ink2); margin-top:.1rem}
+.wxcond b{color:var(--green)}
+.wxtip{color:var(--muted); font-size:.85rem; margin-top:.1rem}
+.wxupd{text-align:right; color:var(--muted); font-size:.75rem; margin-top:.45rem}
+
+/* week frames + race cards */
+.frame{margin-top:1.4rem}
+.framettl{margin-bottom:.6rem}
+.framettl .l1{font-size:1.3rem; font-weight:900}
+.framettl .l2{color:var(--muted); font-weight:700; font-size:.92rem}
+.racegrid{display:grid; grid-template-columns:1fr; gap:.8rem}
+@media(min-width:640px){ .racegrid{grid-template-columns:1fr 1fr} }
+.racecard{display:block; text-decoration:none; background:var(--surface); border:1px solid var(--line);
+  border-radius:1rem; overflow:hidden; box-shadow:var(--shadow)}
+.racecard .ph{height:150px; width:100%; object-fit:cover}
+.racecard .rb{padding:.7rem .9rem .85rem}
+.racecard .rn{font-weight:900; font-size:1.22rem; line-height:1.15}
+.badges{display:flex; flex-wrap:wrap; gap:.35rem; margin-top:.4rem}
+.catchip{font-size:.75rem; font-weight:800; color:#fff; border-radius:.45rem; padding:.22rem .55rem}
+.catchip.inkdark{color:#3d3200}
+.stonechip{font-size:.75rem; font-weight:800; border-radius:.45rem; padding:.22rem .55rem;
+  background:var(--surface2); border:1px solid var(--line); color:var(--ink2)}
+.racecard .rs{display:flex; flex-wrap:wrap; gap:.3rem .9rem; margin-top:.5rem; color:var(--ink2); font-size:.9rem}
+.racecard .rs b{font-family:"Barlow Semi Condensed",sans-serif; font-size:1.05rem; color:var(--ink)}
+
+/* notes */
+.notes{list-style:none}
+.notes li{background:var(--surface); border:1px solid var(--line); border-radius:.8rem;
+  padding:.65rem .9rem; margin-top:.5rem; box-shadow:var(--shadow)}
+
+/* footer */
+.sitefoot{max-width:1080px; margin:0 auto; padding:0 .9rem 2.4rem; color:var(--muted); font-size:.75rem; line-height:1.7}
+.sitefoot .rule{border-top:1px solid var(--line); padding-top:.7rem}
+
+/* home / regions */
+.hero{margin-top:1.6rem}
+.hero h1{font-size:clamp(1.9rem, 8vw, 3.2rem); font-weight:900; line-height:1.08}
+.hero .sub{color:var(--ink2); margin-top:.5rem; max-width:34rem}
+.reggrid{display:grid; grid-template-columns:1fr; gap:.8rem; margin-top:1.1rem}
+@media(min-width:640px){ .reggrid{grid-template-columns:1fr 1fr} }
+.regcard{position:relative; display:block; text-decoration:none; border-radius:1rem; overflow:hidden;
+  min-height:150px; box-shadow:var(--shadow); border:1px solid var(--line); background:var(--surface)}
+.regcard .ph{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.regcard .ov{position:absolute; inset:0; background:linear-gradient(180deg, rgba(16,26,14,.05), rgba(16,26,14,.72))}
+.regcard .rc-in{position:absolute; left:0; right:0; bottom:0; padding:.85rem 1rem; color:#fff}
+.regcard .rn2{font-size:1.5rem; font-weight:900}
+.regcard.soon{display:flex; flex-direction:column; justify-content:flex-end; padding:.85rem 1rem;
+  background:linear-gradient(135deg, var(--surface2), var(--bg2)); color:var(--ink)}
+.regcard.soon .rn2{color:var(--ink2)}
+.soonchip{align-self:flex-start; font-size:.75rem; font-weight:800; color:var(--muted);
+  border:1.5px solid var(--line); border-radius:999px; padding:.15rem .6rem; margin-bottom:.45rem; background:#fff}
+.evtcard{display:flex; gap:0; text-decoration:none; background:var(--surface); border:1px solid var(--line);
+  border-radius:1rem; overflow:hidden; box-shadow:var(--shadow); margin-top:.9rem}
+.evtcard img{width:38%; min-height:130px; object-fit:cover}
+.evtcard .eb{padding:.8rem .95rem}
+.evtcard .et{font-weight:900; font-size:1.15rem; line-height:1.2}
+.shellbox{background:var(--surface); border:1.5px dashed var(--line); border-radius:1rem;
+  padding:1.6rem 1.1rem; text-align:center; color:var(--muted); margin-top:1rem}
+.shellbox .big{font-size:1.15rem; font-weight:900; color:var(--ink2)}
+
+/* race page */
+.subnav{position:sticky; top:var(--bar-h); z-index:600; display:flex; gap:.4rem; overflow-x:auto;
+  padding:.5rem .1rem; background:rgba(237,242,226,.94); backdrop-filter:blur(8px); scrollbar-width:none}
+.subnav::-webkit-scrollbar{display:none}
+.subnav a{flex:none; text-decoration:none; font-weight:700; font-size:.85rem; color:var(--ink2);
+  background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:.3rem .75rem}
+.mapcard{background:var(--surface); border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow);
+  padding:.7rem .7rem .8rem; margin-top:.9rem}
+.mapwrap{position:relative; isolation:isolate; z-index:0; border-radius:.7rem; overflow:hidden; background:#e8efdb}
+.mapwrap svg{display:block; width:100%; height:auto}
+.glmapwrap .gpx-dl{position:absolute; right:10px; bottom:24px; z-index:800; display:inline-flex; align-items:center; gap:6px; padding:7px 12px; border-radius:999px; background:rgba(18,32,20,.82); color:#fff; font-size:12.5px; font-weight:700; letter-spacing:.02em; text-decoration:none; backdrop-filter:blur(3px); border:1px solid rgba(255,255,255,.25)}
+.glmapwrap .gpx-dl svg{width:14px; height:14px; flex:none}
+.maptools{position:absolute; top:.5rem; right:.5rem; z-index:5; display:flex; gap:.35rem}
+.maptools button{font-family:inherit; font-size:.75rem; font-weight:800; border:1px solid var(--line);
+  background:rgba(255,255,255,.92); border-radius:.5rem; padding:.28rem .55rem; cursor:pointer; color:var(--ink)}
+.scrubrow{position:relative; display:flex; align-items:center; justify-content:center; height:26px; box-sizing:border-box; margin:.55rem 0 .3rem; padding:1px 36px 3px 6px}
+.scrubrow .hint{color:var(--muted); font-size:.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.scrubrow .data{font-weight:800; font-size:.85rem; font-variant-numeric:tabular-nums; white-space:nowrap}
+.scrubrow .data b{font-family:"Barlow Semi Condensed",sans-serif; font-size:1rem}
+.scrubx{position:absolute; right:4px; top:50%; transform:translateY(-50%); width:22px; height:22px;
+  border-radius:50%; border:1px solid var(--line); background:var(--surface2); font-size:.8rem; line-height:1;
+  cursor:pointer; display:none; align-items:center; justify-content:center; color:var(--muted)}
+.scrubx.on{display:flex}
+.profwrap{position:relative; touch-action:none}
+.profwrap svg{display:block; width:100%; height:auto}
+.steep{margin-top:.35rem; font-size:.85rem; color:var(--ink2)}
+.steep b{color:var(--ink)}
+.legend{margin-top:.4rem; font-size:.78rem; color:var(--muted); display:flex; flex-wrap:wrap; gap:.3rem .55rem; align-items:center}
+.legend .sw{display:inline-block; width:1.15rem; height:.32rem; border-radius:2px; vertical-align:middle; margin-right:.25rem}
+.srcmicro{margin-top:.35rem; font-size:.72rem; color:var(--muted)}
+.srcmicro a{color:var(--accent-d); font-weight:700}
+.statusbox{margin-top:.6rem; background:var(--surface2); border:1px solid var(--line); border-radius:.7rem;
+  padding:.6rem .8rem; font-size:.92rem}
+.statusbox .stname{font-weight:900}
+.statusbox .cotred{color:var(--red); font-weight:800}
+@keyframes sbIn{from{opacity:0; transform:translateY(5px)} to{opacity:1; transform:translateY(0)}}
+.statusbox.pop{animation:sbIn .18s ease-out}
+.seggrid{display:grid; grid-template-columns:repeat(3,1fr); gap:.45rem; margin-top:.6rem; grid-auto-rows:1fr}
+.segchip{font-family:inherit; text-align:left; background:var(--surface); border:1.5px solid var(--line);
+  border-radius:.7rem; padding:.42rem .55rem; cursor:pointer; min-height:60px; height:100%; box-sizing:border-box;
+  display:flex; flex-direction:column; justify-content:center}
+.segchip .sl{font-weight:800; font-size:.8rem; line-height:1.25; white-space:nowrap}
+.segchip .sd{font-size:.7rem; color:var(--ink2); margin-top:.15rem; white-space:nowrap}
+.segchip .sd b{font-family:"Barlow Semi Condensed",sans-serif; font-size:.86rem}
+.segchip .sg{font-size:.72rem; color:var(--ink2); margin-top:.08rem; white-space:nowrap}
+.segchip .sg b{font-family:"Barlow Semi Condensed",sans-serif; font-size:.88rem}
+.segchip.sel{border-color:var(--prog); background:#eafbef}
+.sttable-wrap{overflow-x:hidden; border:1px solid var(--line); border-radius:1rem; background:var(--surface); box-shadow:var(--shadow); margin-top:.6rem}
+.sttable{width:100%; border-collapse:collapse; font-size:.86rem; table-layout:fixed}
+.sttable th:nth-child(1){width:33%} .sttable th:nth-child(2){width:12%} .sttable th:nth-child(3){width:12%} .sttable th:nth-child(4){width:18%} .sttable th:nth-child(5){width:25%}
+.sttable th{text-align:left; font-size:.72rem; letter-spacing:.05em; color:var(--muted); font-weight:900; padding:.5rem .5rem; border-bottom:2px solid var(--line); background:var(--surface2); white-space:nowrap}
+.sttable td{padding:.48rem .5rem; border-bottom:1px solid var(--line); vertical-align:middle; overflow-wrap:break-word}
+.sttable tbody tr{cursor:pointer}
+.sttable tbody tr:last-child td{border-bottom:none}
+.sttable tbody tr:hover{background:#f4f9f3}
+.sttable tbody tr.sel{background:#eef7ee; box-shadow:inset 3px 0 0 var(--prog)}
+.sttable tbody tr:focus-visible{outline:2px solid var(--prog); outline-offset:-2px}
+.sttable .stcode{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; font-size:1rem; letter-spacing:.03em; color:#1c5c2e}
+.sttable .stname{font-weight:800}
+.sttable .num{font-variant-numeric:tabular-nums; white-space:nowrap}
+.sttable .num b{font-family:"Barlow Semi Condensed",sans-serif; font-size:1rem}
+.sttable .cot{color:var(--red); font-weight:800; font-variant-numeric:tabular-nums; white-space:nowrap}
+.sttable .cot .cd{display:block; font-weight:600; font-size:.72rem}
+.sttable .cot.none{color:var(--muted); font-weight:400}
+.sttable .svc{color:var(--muted); font-size:.78rem; line-height:1.45}
+
+/* collection — 照公開卡定版（bib-week） */
+.bib-venue{font-weight:700; margin-top:.2rem}
+.bib-venue a{color:var(--accent-d)}
+.bib-week{border:1px solid var(--line); border-radius:1rem; background:var(--surface); box-shadow:var(--shadow); padding:.95rem; margin-top:.7rem}
+.bib-week-head{display:flex; justify-content:space-between; align-items:baseline; gap:.6rem}
+.bib-week-head .t{font-weight:900; font-size:1.06rem}
+.bib-week-head .d{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; color:#1c5c2e; font-size:1rem}
+.bib-cell{border:1px solid var(--line); border-radius:.75rem; padding:.6rem .75rem; margin-top:.6rem; background:#fff}
+.bib-cell.c-yellow{background:var(--bib-yellow); border-color:var(--bib-yellow-line)}
+.bib-cell-head{display:flex; gap:.5rem; align-items:baseline}
+.bib-cell-head .dw{font-weight:900; font-size:.95rem}
+.bib-cell-head .dn{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; color:#1c5c2e; font-size:.95rem}
+.bib-part{padding:.5rem 0 .15rem}
+.bib-part + .bib-part{border-top:1.5px solid var(--line); margin-top:.35rem}
+.bib-cell.c-yellow .bib-part + .bib-part{border-top-color:var(--bib-yellow-line)}
+.bib-when{margin-bottom:.35rem}
+.bib-when .tm{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; font-size:1rem; font-variant-numeric:tabular-nums}
+.bib-when .star{color:var(--amber); font-size:1rem}
+.bib-tags{display:flex; flex-wrap:wrap; gap:.3rem}
+.race-tag{display:inline-block; font-size:.72rem; font-weight:800; border-radius:.4rem; padding:.16rem .45rem; color:#fff; letter-spacing:.02em}
+.race-tag.inkdark{color:#3a2f00}
+.bib-legend{margin-top:.6rem; font-size:.85rem; color:var(--ink2)}
+.bib-legend .star{color:var(--amber); font-weight:900}
+.bib-brief{margin-top:.6rem; background:var(--surface2); border:1px solid var(--line); border-radius:.8rem; padding:.65rem .9rem; font-size:.9rem}
+.bring{margin-top:.6rem; background:var(--surface); border:1px solid var(--line); border-radius:.8rem; padding:.7rem .95rem; box-shadow:var(--shadow)}
+.bring h3{font-size:.98rem; font-weight:900}
+.bring ul{margin-top:.4rem; padding-left:1.15rem}
+.bring li{margin-top:.3rem; font-size:.9rem}
+
+/* phases + gear — 照公開卡定版 */
+.ph-sub{font-weight:900; font-size:1.02rem}
+.phases{display:grid; grid-template-columns:1fr 1fr; gap:.6rem; margin-top:.7rem}
+@media (max-width:640px){ .phases{grid-template-columns:1fr} }
+.phase{border:1px solid var(--line); border-radius:.9rem; background:var(--surface); padding:.8rem .95rem; box-shadow:var(--shadow)}
+.phase .km{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; color:var(--amber); font-size:.95rem; letter-spacing:.06em}
+.phase h3{font-size:1rem; font-weight:900; margin-top:.1rem}
+.phase p{font-size:.85rem; color:var(--muted); margin-top:.25rem; line-height:1.55}
+.ph-refs{margin-top:.7rem; font-size:.75rem; color:var(--muted)}
+.ph-refs a{color:var(--accent-d); font-weight:700}
+.gear-figure{margin-top:.7rem}
+.gear-figure a{display:block; border-radius:.9rem; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow)}
+.gear-figure img{width:100%; display:block}
+.gear-figure figcaption{font-size:.75rem; color:var(--muted); margin-top:.35rem; text-align:center}
+.gear-detail-cap{font-size:.83rem; color:var(--muted); margin-top:1rem; font-weight:700}
+.gear-details{margin-top:.5rem; border:1px solid var(--line); border-radius:.9rem; background:var(--surface); box-shadow:var(--shadow); overflow:hidden}
+.gear-details summary{display:flex; justify-content:space-between; align-items:center; gap:.6rem; padding:.8rem .95rem; cursor:pointer; font-weight:900; font-size:.95rem; list-style:none}
+.gear-details summary::-webkit-details-marker{display:none}
+.gear-details .chev{color:var(--muted); transition:transform .2s}
+.gear-details[open ] .chev{transform:rotate(180deg)}
+.gear-list{list-style:none; counter-reset:gi; padding:.1rem .95rem .4rem}
+.gear-list li{display:flex; gap:.6rem; padding:.5rem 0; border-top:1px solid var(--line); align-items:flex-start}
+.gear-list li:first-child{border-top:none}
+.gear-list li::before{counter-increment:gi; content:counter(gi); flex:none; width:1.35rem; height:1.35rem; border-radius:50%; background:#e2efdb; color:#1c5c2e; font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; font-size:.82rem; display:flex; align-items:center; justify-content:center; margin-top:.05rem}
+.gear-list .gtx{min-width:0}
+.gear-list b{font-size:.92rem}
+.gear-list .d{display:block; font-size:.83rem; color:var(--muted); margin-top:.1rem; line-height:1.5}
+.gear-list .dq{display:inline-block; margin-left:.45rem; background:var(--red-soft); color:var(--red); font-size:.7rem; font-weight:800; border-radius:.35rem; padding:.08rem .4rem; vertical-align:.1em}
+.penalty{margin:.4rem .95rem .3rem; border:1px solid #eec9c3; background:#fdf1ef; border-radius:.65rem; padding:.6rem .75rem; font-size:.83rem; color:var(--ink2); line-height:1.6}
+.gear-rec{margin:.5rem .95rem .8rem; font-size:.83rem; color:var(--ink2); line-height:1.6}
+.routedesc{background:var(--surface); border:1px solid var(--line); border-radius:.9rem; box-shadow:var(--shadow); padding:.75rem .95rem; margin-top:.9rem; color:var(--ink2)}
+.backlink{display:inline-block; margin-top:1rem; font-weight:700; color:var(--accent-d); text-decoration:none}
+
+/* ================= 定版對齊（2026-11-19） ================= */
+:root{--green-soft:#e2efdb; --mapbg:#e7eee1}
+
+/* ---- event hub cover （跟定版清邁總覽） ---- */
+.cover.evt{margin:0 -.9rem; border-radius:0; box-shadow:none; min-height:37rem}
+@media(min-width:40rem){ .cover.evt{min-height:34rem} }
+.cover.evt .bgimg{object-position:center 38%}
+.cover.evt::after{background:linear-gradient(180deg, rgba(10,25,12,.16) 0%, rgba(10,25,12,.10) 34%, rgba(10,25,12,.48) 62%, rgba(10,25,12,.86) 100%)}
+.cover.evt .cin{padding:7rem 1rem 1.1rem}
+.cover.evt h1{font-size:clamp(1.15rem, 5vw, 2.5rem)}
+.cover.evt h1 .main{font-size:1.4em}
+@media(max-width:22.5rem){ .cover.evt h1 .main{font-size:1.27em} }
+.cover.evt .dateline{white-space:nowrap}
+@media(max-width:22.5rem){ .cover.evt .dateline{font-size:13.5px} }
+.cover.evt .venueline{font-size:.95rem; font-weight:700}
+.cdstack{position:absolute; top:.7rem; right:.7rem; z-index:3; display:flex; flex-direction:column; align-items:flex-end; gap:.35rem}
+.cdstack .cdpill{background:#d96f00; font-size:.78rem; font-weight:800; padding:.3rem .72rem; line-height:1.3; font-variant-numeric:tabular-nums}
+.cdstack .cdpill b{font-family:inherit; font-size:.78rem; letter-spacing:0}
+
+/* event cover weather — one dark translucent box, two areas */
+.evwx{display:flex; gap:.7rem; align-items:flex-start; background:rgba(9,22,11,.68); color:#eef4e6;
+  border:1px solid rgba(255,255,255,.30); border-radius:1rem; padding:.9rem .95rem .95rem; margin-top:1rem; backdrop-filter:blur(3px)}
+.evwx .wx-ic{flex:0 0 auto; display:inline-flex; margin-top:.15rem}
+.evwx .wx-main{flex:1 1 auto; min-width:0}
+.evwx .wxrow{display:block; margin-top:.75rem; padding-top:.75rem; border-top:1px solid rgba(255,255,255,.18)}
+.evwx .wxrow:first-child{margin-top:0; padding-top:0; border-top:none}
+.evwx .wx-l1{display:flex; align-items:baseline; justify-content:space-between; gap:.6rem}
+.evwx .wx-where{font-weight:800; font-size:.95rem; line-height:1.45}
+.evwx .wx-where .wk{color:#f3d9a8; font-size:.82rem; margin-left:.35rem; white-space:nowrap}
+.evwx .wx-desc{font-size:.9rem; line-height:1.6; margin-top:.2rem}
+.evwx .wx-sun{margin-top:.5rem; font-size:.8rem; line-height:1.55; color:#bfc9ba}
+.evwx .wx-tip{margin-top:.3rem; font-size:.78rem; line-height:1.55; color:#bfc9ba}
+.evwx .wx-temp{color:#f3d9a8; font-weight:800; white-space:nowrap}
+.evwx .wxlink{flex:0 0 auto; margin-left:0; color:#f3d9a8; font-size:.8rem; font-weight:700; text-decoration:none;
+  padding:.28rem .72rem; white-space:nowrap; border:1px solid rgba(243,217,168,.65); border-radius:999px; line-height:1.35}
+.evwx .wx-upd{margin-top:.75rem; padding-top:.6rem; border-top:1px solid rgba(255,255,255,.18);
+  color:#f3d9a8; font-size:.83rem; font-weight:800; text-align:left}
+
+/* week boards + hub race cards */
+.pk-board{background:var(--surface); border:1px solid var(--line); border-radius:.85rem; box-shadow:var(--shadow); overflow:hidden; margin-top:1.25rem}
+.pk-venue{padding:.55rem .8rem .6rem; background:var(--green-soft); border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:.08rem}
+.pk-week{font-weight:800; font-size:1.16rem; line-height:1.3}
+.pk-loc{font-size:.83rem; font-weight:600; color:var(--muted); line-height:1.35}
+.racecards{display:grid; grid-template-columns:repeat(4,1fr); gap:.35rem; padding:.6rem .6rem .7rem}
+.pk-board .racecard{position:relative; border:none; border-radius:.55rem; padding:0; overflow:hidden;
+  aspect-ratio:3/4.35; width:100%; color:#fff; box-shadow:var(--shadow); text-decoration:none; display:block; background:var(--surface)}
+.racecard .rc-bg{position:absolute; inset:0; background-size:cover; background-position:center}
+.racecard .rc-veil{position:absolute; inset:0; background:linear-gradient(180deg, rgba(8,18,10,.30) 0%, rgba(8,18,10,0) 34%, rgba(8,18,10,.40) 60%, rgba(8,18,10,.88) 100%)}
+.racecard .rc-in{position:relative; display:flex; flex-direction:column; height:100%; padding:.32rem .34rem .4rem}
+.racecard .rc-top{display:flex; align-items:flex-start; justify-content:space-between; gap:.2rem; flex-wrap:wrap}
+.rc-cat{font-size:.56rem; font-weight:800; letter-spacing:.03em; border-radius:.28rem; padding:.1rem .3rem; line-height:1.25; white-space:nowrap}
+.rc-stones{display:inline-flex; align-items:center; background:rgba(10,18,38,.88); color:#fff; font-size:.56rem; font-weight:800;
+  border:1px solid rgba(255,255,255,.55); border-radius:999px; padding:.08rem .32rem; line-height:1.25; white-space:nowrap}
+.racecard .rc-bot{display:block; margin-top:auto}
+.racecard .rc-name{display:block; font-size:.86rem; font-weight:800; line-height:1.24; letter-spacing:.01em; text-shadow:0 1px 4px rgba(0,0,0,.65)}
+.racecard .rc-ver{font-size:.6rem; font-weight:800; opacity:.85; letter-spacing:.06em; white-space:nowrap}
+.racecard .rc-stats{display:flex; flex-direction:column; margin-top:.18rem; font-size:.58rem; font-weight:800; line-height:1.35; font-variant-numeric:tabular-nums; text-shadow:0 1px 4px rgba(0,0,0,.65)}
+@media(min-width:40rem){
+  .racecards{gap:.55rem; padding:.7rem .8rem .85rem}
+  .racecard .rc-in{padding:.55rem .6rem .65rem}
+  .racecard .rc-name{font-size:1.3rem}
+  .racecard .rc-stats{font-size:.8rem}
+  .racecard .rc-ver{font-size:.8rem}
+  .rc-cat{font-size:.72rem; padding:.16rem .45rem}
+  .rc-stones{font-size:.72rem; padding:.12rem .45rem}
+}
+.evt-notes{padding:.55rem 1rem .7rem; margin-top:.2rem}
+.evt-notes ul{margin:.2rem 0 0; padding-left:1.15rem; line-height:1.65; font-size:.93rem}
+.evt-notes li{margin:.3rem 0}
+
+/* ---- race cover （跟公開卡） ---- */
+.hero-cdwrap{position:absolute; top:.7rem; right:.7rem; z-index:3; display:inline-flex; align-items:center; gap:.35rem;
+  background:rgba(217,111,22,.95); color:#fff; padding:.42rem .72rem; border-radius:999px; box-shadow:0 2px 10px rgba(0,0,0,.35)}
+.hero-cdwrap .cdpill{background:transparent; box-shadow:none; padding:0; font-size:.78rem; font-weight:800; line-height:1.3; font-variant-numeric:tabular-nums}
+.hero-cdwrap .cdpill b{font-family:inherit; font-size:.78rem; letter-spacing:0}
+a.hero-weather{text-decoration:none; cursor:pointer}
+.hero-weather{display:flex; gap:10px; align-items:flex-start; margin-top:11px; max-width:560px;
+  background:rgba(10,24,13,.52); border:1px solid rgba(255,255,255,.28); border-radius:14px;
+  padding:10px 13px; backdrop-filter:blur(4px); color:#fff}
+.hero-weather svg{flex:0 0 auto; margin-top:1px; color:#ffd9a8}
+.hero-weather .hw-main{font-size:14.5px; font-weight:700; line-height:1.4; color:#fff}
+.hero-weather .hw-main b{color:#ffd9a8; font-family:"Barlow Semi Condensed",sans-serif; font-size:16px; letter-spacing:.02em}
+.hero-weather .hw-sub{font-size:11.5px; line-height:1.45; color:rgba(255,255,255,.82); margin-top:2px}
+.hero-weather .hw-updated{font-size:11.5px; line-height:1.45; color:#ffd9a8; font-weight:700; margin-top:4px; letter-spacing:.02em}
+.stats{display:grid; grid-template-columns:repeat(var(--n,4),1fr); gap:10px; margin-top:16px}
+.stat{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:12px 8px 10px; text-align:center; box-shadow:var(--shadow)}
+.stat .v{font-family:"Barlow Semi Condensed",sans-serif; font-weight:700; font-size:clamp(24px,6.4vw,34px); line-height:1; color:var(--green)}
+.stat .v small{font-size:.55em; font-weight:600; color:var(--muted); margin-left:2px}
+.stat .k{font-size:12px; color:var(--muted); margin-top:5px; font-weight:500}
+@media(max-width:420px){ .stats{grid-template-columns:repeat(2,1fr)} }
+.facts{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+.fact{background:var(--surface2); border:1px solid var(--line); border-radius:99px; padding:7px 13px; font-size:13px; font-weight:500; color:var(--ink)}
+.fact b{color:var(--green)}
+
+/* ---- MapLibre map （移植自公開卡） ---- */
+.glmapwrap{position:relative; isolation:isolate; z-index:0; border-radius:.7rem; overflow:hidden; background:var(--mapbg)}
+#glmap{height:340px; background:var(--mapbg)}
+@media(max-width:560px){ #glmap{height:300px} }
+.maplibregl-map{font:inherit; background:var(--mapbg)}
+.maplibregl-map .maplibregl-ctrl-attrib{margin:0; padding:1px 5px; background:rgba(255,255,255,.55);
+  color:rgba(0,0,0,.7); font-size:10px; line-height:1.4}
+.maplibregl-map .maplibregl-ctrl-attrib a{color:rgba(0,0,0,.7); text-decoration:none}
+.map-pin{display:flex; align-items:center; justify-content:center; min-width:30px; height:22px; padding:0 5px; border-radius:6px;
+  background:#22452c; color:#fff; font-family:"Barlow Semi Condensed","Noto Sans TC",sans-serif; font-weight:700; font-size:11.5px; line-height:1;
+  border:2px solid #fff; box-shadow:0 1px 5px rgba(0,0,0,.4); white-space:nowrap; cursor:pointer}
+.map-pin--sel{background:#2e9e5b; transform:scale(1.18)}
+.map-pin--summit{background:#7a4a12; cursor:default}
+.map-pin--sf{padding:0; overflow:hidden; background:transparent; transform:none}
+.map-pin-half{display:flex; flex:1; align-items:center; justify-content:center; padding:0 8px; height:100%; cursor:pointer;
+  font-family:"Noto Sans TC",sans-serif; font-size:11.5px}
+.map-pin-half--start{background:#a9cfae; color:#1d3a22; border-right:1.5px solid #fff}
+.map-pin-half--finish{background:#e4efe1; color:#1d3a22}
+.map-pin--sf.sel-start .map-pin-half--start, .map-pin--sf.sel-finish .map-pin-half--finish{background:#22452c; color:#fff}
+.map-dot-wrap{display:flex; align-items:center; justify-content:center; width:100%; height:100%}
+.map-dot{border-radius:9999px; background:#22452c; border:1.5px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,.45); box-sizing:border-box; cursor:pointer}
+.map-dot--sel{background:#2e9e5b}
+.map-dot--summit{background:#7a4a12; cursor:default}
+.map-mode{position:absolute; left:10px; top:10px; z-index:800; display:flex; overflow:hidden; border-radius:99px;
+  background:rgba(255,255,255,.95); box-shadow:0 2px 8px rgba(0,0,0,.3); border:1px solid rgba(0,0,0,.2)}
+.map-mode button{appearance:none; border:0; background:transparent; color:#1d3a22; font-family:inherit; font-size:12px; font-weight:700;
+  padding:6px 13px; cursor:pointer; min-height:28px; line-height:1}
+.map-mode button.on{background:#22452c; color:#fff}
+.labels-toggle{position:absolute; right:10px; top:10px; z-index:800; display:inline-flex; align-items:center;
+  background:rgba(255,255,255,.95); color:#1d3a22; font-size:12px; font-weight:700; font-family:inherit;
+  padding:6px 12px; border-radius:99px; border:1px solid rgba(0,0,0,.2); cursor:pointer;
+  box-shadow:0 2px 8px rgba(0,0,0,.3); min-height:28px; line-height:1}
+.labels-toggle:active{background:#e4efe1}
+.fit-route{position:absolute; left:10px; bottom:10px; z-index:800; width:40px; height:40px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,.95); color:#1d3a22;
+  border:1px solid rgba(0,0,0,.2); box-shadow:0 2px 8px rgba(0,0,0,.3); cursor:pointer; padding:0}
+.fit-route:disabled{opacity:.5; cursor:default}
+.fit-route:active{background:#e4efe1}
+.map-loading{position:absolute; inset:0; z-index:900; display:flex; align-items:center; justify-content:center; background:rgba(10,20,12,.25)}
+.map-loading span{background:rgba(255,255,255,.95); color:#1d3a22; font-size:13.5px; font-weight:700;
+  padding:8px 16px; border-radius:99px; box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.map-fallback{padding:14px 16px; font-size:13.5px}
+.map-fallback ul{margin:8px 0 0; padding:0; list-style:none}
+.map-fallback li{margin:4px 0; color:var(--muted)}
+.map-fallback li b{color:var(--ink); font-family:"Barlow Semi Condensed",sans-serif; letter-spacing:.02em}
+.prof-zoomrow{display:flex; align-items:center; justify-content:space-between; gap:8px; padding:0 4px 4px; margin-top:.4rem}
+.prof-zoomrow .zl{font-size:11px; font-weight:600; color:var(--muted); font-variant-numeric:tabular-nums}
+.prof-zoomrow .zr{appearance:none; border:1px solid var(--line); background:var(--surface2); color:var(--ink);
+  font-family:inherit; font-size:11px; font-weight:700; padding:4px 10px; border-radius:99px; cursor:pointer; min-height:26px}
+</style>
+</head>
+<body>
+<header class="sitebar">
+  <a class="logo" href="#/">清邁越野賽事總覽<small>CHIANG MAI · THAILAND BY UTMB</small></a>
+  <div class="sp"></div>
+  <button class="langbtn" id="langBtn" type="button">EN</button>
+</header>
+<main id="app"></main>
+<footer class="sitefoot"><div class="rule" id="footRule"></div></footer>
+
+<script src="data.js"></script>
+<script>
+(function(){
+"use strict";
+var app = document.getElementById("app");
+var foot = document.getElementById("footRule");
+var state = { race:null, sel:null, scrub:null, view:null, ptrs:{} };
+
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+function fmtNum(n){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+function raceById(id){ for (var i=0;i<RACES.length;i++) if (RACES[i].id===id) return RACES[i]; return null; }
+function raceName(r){ return r.name + (r.version ? " " + r.version : ""); }
+function raceTag(r){ return r.name + (r.version ? "-"+r.version : ""); }
+function catColor(r){ return r.version==="NIGHT" ? "#1d2b4f" : (CAT[r.cat]||"#2e7d46"); }
+function catInkFor(r){ if (r.version!=="NIGHT" && r.cat==="20K") return "#3d3200"; return "#fff"; }
+function limitMin(limit){ var m=/(\d+)h(?:(\d+))?/.exec(limit||""); if(!m) return 0; return (+m[1])*60 + (+(m[2]||0)); }
+function startMs(r){ return Date.parse(START_ISO[r.id]); }
+function nowBangkok(){ return Date.now(); }
+
+/* countdown text for a race id; returns {txt, cls} */
+function cdState(r){
+  var s = startMs(r), e = s + limitMin(r.limit)*60000, n = nowBangkok();
+  if (n < s){
+    var diff = s - n, d = Math.floor(diff/86400000), h = Math.floor(diff%86400000/3600000), mi = Math.floor(diff%3600000/60000);
+    var t = (d>0 ? (LANG==="en" ? d+"d " : "仲有 "+d+" 日 ") : (LANG==="en" ? "in " : "仲有 ")) +
+      String(h).padStart(2,"0") + ":" + String(mi).padStart(2,"0");
+    if (d===0 && LANG!=="en") t = "仲有 " + String(h).padStart(2,"0") + ":" + String(mi).padStart(2,"0");
+    return { txt:(LANG==="en" ? "Starts in " : "仲有 ") + (d>0 ? d + (LANG==="en" ? "d " : " 日 ") : "") + String(h).padStart(2,"0") + ":" + String(mi).padStart(2,"0"), cls:"" };
+  }
+  if (n < e) return { txt: LANG==="en" ? "Racing now" : "已開賽", cls:"live" };
+  return { txt: LANG==="en" ? "Finished" : "已完結", cls:"done" };
+}
+function cdPill(r, prefix){
+  var c = cdState(r);
+  return '<span class="cdpill '+c.cls+'" data-cd="'+r.id+'">' + (prefix?esc(prefix)+" · ":"") + "<b>" + esc(c.txt) + "</b></span>";
+}
+function tickCountdowns(){
+  var els = document.querySelectorAll("[data-cd]");
+  for (var i=0;i<els.length;i++){
+    var r = raceById(els[i].getAttribute("data-cd")); if(!r) continue;
+    var c = cdState(r), pre = els[i].getAttribute("data-cdpre")||"";
+    els[i].className = "cdpill " + c.cls;
+    els[i].innerHTML = (pre?esc(pre)+" · ":"") + "<b>" + esc(c.txt) + "</b>";
+  }
+}
+setInterval(tickCountdowns, 30000);
+
+function crumbsHTML(items){
+  var h = '<nav class="crumbs">';
+  items.forEach(function(it, i){
+    if (i>0) h += '<span class="sep">/</span>';
+    if (it.href) h += '<a href="'+it.href+'">'+esc(it.label)+'</a>';
+    else h += '<span>'+esc(it.label)+'</span>';
+  });
+  return h + "</nav>";
+}
+function footHTML(){
+  return esc(L(SRC_LINE)) + "<br>" + esc(L(PHOTO_CREDIT));
+}
+
+/* ================= HOME ================= */
+function viewHome(){
+  state.race = null;
+  var h = '<div class="wrap"><section class="hero">';
+  h += "<h1>" + (LANG==="en" ? "APAC Trail Race Hub" : "亞太越野賽事總覽") + "</h1>";
+  h += '<p class="sub">' + (LANG==="en"
+    ? "One hub for Asia-Pacific trail races: regional directories, event overviews and a full page for every race — course map, elevation profile, aid stations, cut-offs and mandatory gear, all verified against official sources."
+    : "亞太區越野賽事一個站睇晒：地區目錄、賽事總覽、同逐場賽事頁 — 路線圖、攀升圖、補給站、關門時間、強制裝備，全部核實自大會官方來源。") + "</p></section>";
+  h += '<div class="reggrid">';
+  REGIONS.forEach(function(rg){
+    if (rg.id === "thailand"){
+      h += '<a class="regcard" href="#/region/thailand"><img class="ph" src="https://commons.wikimedia.org/wiki/Special:FilePath/Wat_Pha_Lat%2C_Chiang_Mai_20250116.jpg?width=1600" alt="Chiang Mai"><span class="ov"></span>' +
+        '<span class="rc-in"><span class="rn2">' + esc(L(rg)) + ' · ' + (LANG==="en"?"Thailand":"") + '</span><br>' +
+        '<span class="small">' + (LANG==="en" ? "Chiang Mai Thailand by UTMB · 1 event · 12 races" : "清邁 Thailand by UTMB · 1 個賽事 · 12 場比賽") + "</span></span></a>";
+    } else {
+      h += '<a class="regcard soon" href="#/region/'+rg.id+'"><span class="soonchip">' + (LANG==="en"?"Coming soon":"籌備中") + '</span>' +
+        '<span class="rn2">' + esc(L(rg)) + '</span><span class="small muted">' + (LANG==="en" ? "Event overviews coming soon" : "賽事總覽陸續加入") + "</span></a>";
+    }
+  });
+  h += "</div></div>";
+  app.innerHTML = h; foot.innerHTML = footHTML();
+  window.scrollTo(0,0);
+}
+
+/* ================= REGION ================= */
+function viewRegion(id){
+  state.race = null;
+  var rg = null; REGIONS.forEach(function(x){ if (x.id===id) rg = x; });
+  if (!rg){ location.hash = "#/"; return; }
+  var h = crumbsHTML([{label: LANG==="en"?"APAC":"亞太區", href:"#/"}, {label: L(rg)}]);
+  h += '<div class="wrap">';
+  if (id === "thailand"){
+    h += '<h2 class="secttl">' + esc(L(rg)) + ' <span class="en">Thailand</span></h2>';
+    h += '<a class="evtcard" href="#/event/chiangmai-utmb"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Wat_Pha_Lat%2C_Chiang_Mai_20250116.jpg?width=1600" alt="Wat Pha Lat, Chiang Mai"><span class="eb">' +
+      '<span class="et">HOKA Chiang Mai Thailand by UTMB® 2026</span><br>' +
+      '<span class="muted small">' + (LANG==="en" ? "27 Nov – 6 Dec 2026 · Doi Inthanon / Chiang Mai PAO Park" : "2026 年 11 月 27 日 – 12 月 6 日 · Doi Inthanon／Chiang Mai PAO Park") + '</span><br>' +
+      '<span class="small"><b>12</b> ' + (LANG==="en" ? "races · 2 race weeks" : "場比賽 · 2 個比賽週") + "</span></span></a>";
+  } else {
+    h += '<h2 class="secttl">' + esc(L(rg)) + ' <span class="en">' + esc(rg.en) + '</span></h2>';
+    h += '<div class="shellbox"><div class="big">' + (LANG==="en" ? "Coming soon" : "籌備中") + "</div>" +
+      "<p>" + (LANG==="en" ? "This regional hub uses the same overview template as Thailand. Events will be added here once their official data is verified — nothing is listed until then." : "本地區總覽會沿用泰國站同一套總覽模板。賽事資料核實完成後先會加入，未核實之前唔會列任何賽事。") + "</p></div>";
+  }
+  h += '<a class="backlink" href="#/">← ' + (LANG==="en" ? "Back to APAC" : "返亞太區首頁") + "</a></div>";
+  app.innerHTML = h; foot.innerHTML = footHTML();
+  window.scrollTo(0,0);
+}
+
+/* ================= EVENT (Chiang Mai hub) ================= */
+function raceCardHTML(r){
+  var img = RACEIMG[r.id];
+  var name = r.name, sub = r.version || "";
+  var m = r.name.match(/^(.*) \((.*)\)$/);
+  if (m){ name = m[1]; sub = m[2]; }
+  var distTxt = r.dist.replace(/\s*KM/i, "") + " km";
+  var gainTxt = r.gain.replace(/^\+/, "").replace(/\s*M\+?$/, "") + " M+";
+  var top = "";
+  if (r.cat) top += '<span class="rc-cat" style="background:' + CAT[r.cat] + ';color:' + catInk(r.cat) + '">' + esc(r.cat) + '</span>';
+  if (r.stones != null) top += '<span class="rc-stones">' + r.stones + ' ' + (LANG==="en" ? "stones" : "石") + '</span>';
+  var grad = r.cat ? CAT[r.cat] : "#5c6656";
+  return '<a class="racecard" href="#/race/' + r.id + '" style="background:linear-gradient(165deg,' + grad + ' 0%,#1d2b1a 92%)">' +
+    (img ? '<span class="rc-bg" style="background-image:url(' + img + ')"></span>' : "") +
+    '<span class="rc-veil"></span>' +
+    '<span class="rc-in"><span class="rc-top">' + top + '</span>' +
+    '<span class="rc-bot"><span class="rc-name">' + esc(name) + (sub ? ' <span class="rc-ver">' + esc(sub) + '</span>' : '') + '</span>' +
+    '<span class="rc-stats"><span>' + esc(distTxt) + '</span><span>' + esc(gainTxt) + '</span></span></span></span></a>';
+}
+/* event-cover weather row （定版格式：深色框內一區） */
+function boldTemps(s){
+  return esc(s).replace(/(\d+(?:–|-)\d+°C)/g, '<span class="wx-temp">$1</span>');
+}
+var WX_ICON_SVG = '<svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#f3d9a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="3.1"/><path d="M8 2.2v1.5M2.2 8h1.5M3.9 3.9l1.1 1.1M12.1 3.9L11 5"/><path d="M10.2 20.6h7a3.7 3.7 0 0 0 .8-7.3 5.1 5.1 0 0 0-9.9 1.1 3.3 3.3 0 0 0 2.1 6.2z"/></svg>';
+var HW_ICON_SVG = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v1.5"/><path d="M4.6 5.6l1 1"/><path d="M3 10h1.5"/><path d="M14.5 4.4a4.2 4.2 0 1 0 1.2 6.7"/><path d="M7 21h10.5a3.5 3.5 0 0 0 .6-6.95 5 5 0 0 0-9.6 1.2A3.2 3.2 0 0 0 7 21z"/></svg>';
+var CD_CAL_SVG = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18"/><path d="M8 2.5v4"/><path d="M16 2.5v4"/></svg>';
+var GPX_DL_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v11"/><path d="M7 10.5 12 15l5-4.5"/><path d="M4 19.5h16"/></svg>';
+var FIT_SVG = '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>';
+function boldTempsB(s){
+  return esc(s).replace(/(\d+(?:–|-)\d+°C)/g, "<b>$1</b>");
+}
+function evwxRow(w, wkTag){
+  var area = L(w.area);
+  if (w === WEATHER.city && LANG !== "en") area = "市區 · 清邁市";
+  var h = '<div class="wxrow"><div class="wx-l1"><span class="wx-where">' + esc(area) +
+    '<span class="wk">' + esc(L(wkTag)) + '</span></span>' +
+    '<a class="wxlink" href="' + w.url + '" target="_blank" rel="noopener">' + (LANG==="en" ? "Weather overview →" : "天氣概況 →") + "</a></div>" +
+    '<div class="wx-desc">' + boldTemps(L(w.cond)) + "</div>";
+  if (w.sun) h += '<div class="wx-sun">' + esc(L(w.sun) + " · " + L(w.tip)) + "</div>";
+  else h += '<div class="wx-tip">' + esc(L(w.tip)) + "</div>";
+  return h + "</div>";
+}
+function viewEvent(){
+  state.race = null;
+  var h = crumbsHTML([
+    {label: LANG==="en"?"Chiang Mai":"清邁站"}
+  ]);
+  h += '<div class="wrap">';
+  /* cover — 跟定版：全幅、倒數膠囊右上角、天氣框入封面 */
+  h += '<section class="cover evt"><img class="bgimg" src="'+EVENT.cover+'" alt="Wat Pha Lat, Chiang Mai">';
+  h += '<div class="cdstack">' +
+    '<span class="cdpill" data-cd="pagoda-day" data-cdpre="Week 1"></span>' +
+    '<span class="cdpill" data-cd="elephant100" data-cdpre="Week 2"></span></div>';
+  h += '<div class="cin">';
+  h += '<a class="eyebrow" href="'+EVENT.officialUrl+'" target="_blank" rel="noopener">'+esc(EVENT.eyebrow)+"</a>";
+  if (LANG==="en") h += '<h1><span class="main">'+esc(EVENT.titleEn)+'</span><span class="suffix">'+esc(EVENT.titleSuffixEn)+"</span></h1>";
+  else h += '<h1><span class="main">'+esc(EVENT.titleZh)+'</span><span class="suffix">'+esc(EVENT.titleSuffix)+"</span></h1>";
+  h += '<div class="dateline">'+esc(L(EVENT.dateLine))+"</div>";
+  h += '<div class="venueline">' + EVENT.venues.map(function(v){
+    return '<a href="'+v.maps+'" target="_blank" rel="noopener">'+esc(L(v))+"</a>";
+  }).join("／") + "</div>";
+  /* weather — single dark box inside the cover */
+  h += '<div class="evwx"><span class="wx-ic">' + WX_ICON_SVG + '</span><div class="wx-main">';
+  h += evwxRow(WEATHER.mountain, {zh:"Week 1 場地", en:"Week 1 venue"});
+  h += evwxRow(WEATHER.city, {zh:"Week 2 場地 · PAO Park", en:"Week 2 venue · PAO Park"});
+  h += '<div class="wx-upd">'+esc(L(WEATHER.updated))+"</div>";
+  h += "</div></div>";
+  h += "</div></section>";
+  /* week boards */
+  [[1,"Week 1 · 11月27–29日","Doi Inthanon National Park HQ","Week 1 · 27–29 Nov"],
+   [2,"Week 2 · 12月3–6日","Chiang Mai PAO Park","Week 2 · 3–6 Dec"]].forEach(function(wk){
+    h += '<section class="pk-board"><div class="pk-venue"><span class="pk-week">' +
+      (LANG==="en" ? wk[3] : wk[1]) + '</span><span class="pk-loc">' + esc(wk[2]) + '</span></div><div class="racecards">';
+    RACES.forEach(function(r){ if (r.week === wk[0]) h += raceCardHTML(r); });
+    h += "</div></section>";
+  });
+  /* notes */
+  h += '<h2 class="secttl">' + (LANG==="en" ? "Notes for all races" : "共用注意事項") + ' <span class="en">Notes</span></h2><div class="card evt-notes"><ul>';
+  EVENT_NOTES.forEach(function(n){ h += "<li>" + esc(L(n)) + "</li>"; });
+  h += "</ul></div>";
+  h += "</div>";
+  app.innerHTML = h; foot.innerHTML = footHTML();
+  tickCountdowns();
+  window.scrollTo(0,0);
+}
+
+/* ================= GEO helpers ================= */
+function eleAt(geo, km){
+  var p = geo.prof;
+  if (km <= p[0][0]) return p[0][1];
+  if (km >= p[p.length-1][0]) return p[p.length-1][1];
+  for (var i=1;i<p.length;i++){
+    if (p[i][0] >= km){
+      var k0=p[i-1][0], e0=p[i-1][1], k1=p[i][0], e1=p[i][1];
+      return k1===k0 ? e1 : e0 + (e1-e0)*(km-k0)/(k1-k0);
+    }
+  }
+  return p[p.length-1][1];
+}
+function gradeAt(geo, km){
+  var a = Math.max(0, km-0.1), b = Math.min(geo.totalKm, km+0.1);
+  if (b-a < 0.01) return 0;
+  return (eleAt(geo,b) - eleAt(geo,a)) / ((b-a)*1000) * 100;
+}
+function steepest(geo){
+  var up={g:-1e9,km:0}, dn={g:1e9,km:0};
+  for (var km=0; km<=geo.totalKm; km+=0.05){
+    var g = gradeAt(geo, km);
+    if (g>up.g) up={g:g,km:km};
+    if (g<dn.g) dn={g:g,km:km};
+  }
+  function mk(r){ return { g:r.g, from:Math.max(0, Math.round((r.km-0.1)*10)/10), to:Math.min(geo.totalKm, Math.round((r.km+0.1)*10)/10) }; }
+  return { up:mk(up), dn:mk(dn) };
+}
+function geoStation(geo, code){
+  for (var i=0;i<geo.stations.length;i++) if (geo.stations[i].code===code) return geo.stations[i];
+  return null;
+}
+function chartStation(race, code){
+  for (var i=0;i<race.stations.length;i++) if (race.stations[i].code===code) return race.stations[i];
+  return null;
+}
+function svcText(st){
+  if (!st || !st.svc) return "";
+  return st.svc.map(function(k){ return SVC[k] ? L(SVC[k]) : k; }).join("、");
+}
+function cotText(st){
+  if (!st || !st.cot) return "";
+  return (LANG==="en" ? "Cut-off " : "關門 ") + st.cot + (st.cotDay ? " ("+st.cotDay+")" : "");
+}
+
+/* track cumulative fractions (for map progress) */
+function trackFracs(geo){
+  if (geo._fr) return geo._fr;
+  var t = geo.track, fr=[0], acc=0, i, dLat, dLon, la0=t[0][0]*Math.PI/180;
+  var cs = Math.cos(la0);
+  for (i=1;i<t.length;i++){
+    dLat = t[i][0]-t[i-1][0]; dLon = (t[i][1]-t[i-1][1])*cs;
+    acc += Math.sqrt(dLat*dLat + dLon*dLon); fr.push(acc);
+  }
+  for (i=0;i<fr.length;i++) fr[i] = acc>0 ? fr[i]/acc : 0;
+  geo._fr = fr; return fr;
+}
+function trackPointAt(geo, frac){
+  var t = geo.track, fr = trackFracs(geo);
+  for (var i=1;i<fr.length;i++){
+    if (fr[i] >= frac){
+      var f0=fr[i-1], f1=fr[i], k = f1>f0 ? (frac-f0)/(f1-f0) : 0;
+      return [ t[i-1][0] + (t[i][0]-t[i-1][0])*k, t[i-1][1] + (t[i][1]-t[i-1][1])*k ];
+    }
+  }
+  return t[t.length-1];
+}
+
+/* ================= MAP (SVG) ================= */
+
+/* ================= PROFILE (SVG) ================= */
+function profGeom(geo){
+  var minE=1e9, maxE=-1e9;
+  geo.prof.forEach(function(p){ minE=Math.min(minE,p[1]); maxE=Math.max(maxE,p[1]); });
+  return { minE: Math.floor((minE-15)/10)*10, maxE: Math.ceil((maxE+25)/10)*10 };
+}
+function profSVG(race, geo){
+  var dense = geo.stations.length > 8;
+  var W=1000, H=dense?372:330, padL=8, padR=8, padT=54, padB=dense?110:46;
+  var a = state.view ? state.view.a : 0, b = state.view ? state.view.b : geo.totalKm;
+  var gm = profGeom(geo);
+  function X(km){ return padL + (km-a)/(b-a)*(W-padL-padR); }
+  function Y(e){ return padT + (gm.maxE-e)/(gm.maxE-gm.minE)*(H-padT-padB); }
+  var pts = [], i, p;
+  pts.push([a, eleAt(geo,a)]);
+  for (i=0;i<geo.prof.length;i++){ p=geo.prof[i]; if (p[0]>a && p[0]<b) pts.push(p); }
+  pts.push([b, eleAt(geo,b)]);
+  function path(upto){
+    var s = "", started = false;
+    for (var j=0;j<pts.length;j++){
+      var km = pts[j][0]; if (upto!=null && km > upto) break;
+      s += (started?"L":"M") + X(km).toFixed(1) + " " + Y(pts[j][1]).toFixed(1) + " ";
+      started = true;
+    }
+    if (upto!=null){
+      s += "L" + X(upto).toFixed(1) + " " + Y(eleAt(geo,upto)).toFixed(1) + " ";
+      return { line:s, area: s + "L" + X(upto).toFixed(1) + " " + Y(gm.minE).toFixed(1) + " L" + X(a).toFixed(1) + " " + Y(gm.minE).toFixed(1) + " Z" };
+    }
+    return { line:s, area: s + "L" + X(b).toFixed(1) + " " + Y(gm.minE).toFixed(1) + " L" + X(a).toFixed(1) + " " + Y(gm.minE).toFixed(1) + " Z" };
+  }
+  var full = path(null);
+  var progKm = state.scrub!=null ? state.scrub : (state.sel ? (function(){ var gs=geoStation(geo,state.sel); return gs ? gs.frac*geo.totalKm : 0; })() : 0);
+  var h = '<svg viewBox="0 0 '+W+" "+H+'" role="img" aria-label="elevation profile">';
+  h += '<path d="'+full.area+'" fill="#d3dec0"/>';
+  h += '<path d="'+full.line+'" fill="none" stroke="#7d8f74" stroke-width="2.5" stroke-linejoin="round"/>';
+  if (progKm > a && progKm <= b){
+    var pr = path(Math.min(progKm,b));
+    h += '<path d="'+pr.area+'" fill="rgba(47,191,90,.45)"/>';
+    h += '<path d="'+pr.line+'" fill="none" stroke="#2fbf5a" stroke-width="3" stroke-linejoin="round"/>';
+  }
+  geo.stations.forEach(function(gs, idx){
+    var km = gs.frac*geo.totalKm; if (km < a || km > b) return;
+    var st = chartStation(race, gs.code);
+    var rowB = dense && (idx % 2 === 1);
+    var x = X(km);
+    var anchor = gs.code==="START" ? "start" : (gs.code==="FINISH" ? "end" : "middle");
+    var lx = gs.code==="START" ? x+2 : (gs.code==="FINISH" ? x-2 : x);
+    var codeY = rowB ? H-42 : (dense ? H-84 : H-30);
+    var subY = rowB ? H-26 : (dense ? H-68 : H-14);
+    h += '<line x1="'+x.toFixed(1)+'" y1="'+padT+'" x2="'+x.toFixed(1)+'" y2="'+(H-padB)+'" stroke="#b9c6a4" stroke-width="1" stroke-dasharray="3 4"/>';
+    h += '<circle cx="'+x.toFixed(1)+'" cy="'+Y(gs.ele).toFixed(1)+'" r="5.5" fill="#fff" stroke="#2e7d46" stroke-width="2.5"/>';
+    h += '<text x="'+lx.toFixed(1)+'" y="'+codeY+'" text-anchor="'+anchor+'" font-size="20" font-weight="700" fill="#22331d">'+esc(gs.code)+"</text>";
+    if (st && st.cot) h += '<text x="'+lx.toFixed(1)+'" y="'+subY+'" text-anchor="'+anchor+'" font-size="18" font-weight="700" fill="#d92323">'+esc(st.cot)+"</text>";
+    else if (st) h += '<text x="'+lx.toFixed(1)+'" y="'+subY+'" text-anchor="'+anchor+'" font-size="17" fill="#6d7a61">km '+st.km+"</text>";
+  });
+  if (geo.peak && geo.peak.km>=a && geo.peak.km<=b){
+    var pkx = X(geo.peak.km), pky = Y(geo.peak.ele);
+    var pkA = "middle", pkLx = pkx;
+    if (pkx < 110){ pkA = "start"; pkLx = pkx + 16; }
+    else if (pkx > W-110){ pkA = "end"; pkLx = pkx - 16; }
+    h += '<path d="M '+pkx.toFixed(1)+" "+(pky-20).toFixed(1)+' l 10 17 l -20 0 z" fill="#22331d"/>' +
+      '<text x="'+pkLx.toFixed(1)+'" y="'+(pky-30).toFixed(1)+'" text-anchor="'+pkA+'" font-size="20" font-weight="700" fill="#22331d">' + fmtNum(geo.peak.ele) + " m</text>";
+  }
+  if (state.scrub!=null && state.scrub>=a && state.scrub<=b){
+    h += '<line x1="'+X(state.scrub).toFixed(1)+'" y1="'+padT+'" x2="'+X(state.scrub).toFixed(1)+'" y2="'+(H-padB)+'" stroke="#e8762d" stroke-width="2.5"/>' +
+      '<circle cx="'+X(state.scrub).toFixed(1)+'" cy="'+Y(eleAt(geo,state.scrub)).toFixed(1)+'" r="7" fill="#e8762d" stroke="#fff" stroke-width="2.5"/>';
+  }
+  h += '<text x="'+padL+'" y="19" font-size="17" fill="#6d7a61">'+gm.maxE+' m</text>';
+  if (b - a < geo.totalKm - 0.01){
+    var gspan = b - a, gstep = gspan<=5 ? 1 : (gspan<=15 ? 2 : (gspan<=35 ? 5 : 10));
+    for (var gk = Math.ceil(a/gstep)*gstep; gk < b; gk += gstep){
+      var gx = X(gk); if (gx < 46 || gx > W-46) continue;
+      h += '<text x="'+gx.toFixed(1)+'" y="19" text-anchor="middle" font-size="15" fill="#6d7a61">'+gk+' km</text>';
+    }
+  }
+  h += "</svg>";
+  return h;
+}
+function scrubText(race, geo){
+  if (state.scrub==null) return null;
+  var km = state.scrub, e = Math.round(eleAt(geo,km)), g = gradeAt(geo,km);
+  var gs = LANG==="en" ? "gradient " : "斜度 ";
+  return "km <b>" + (Math.round(km*10)/10) + "</b> · " + (LANG==="en"?"elev ":"海拔 ") + "<b>" + e + " m</b> · " + gs + "<b>" + (g>0?"+":"") + (Math.round(g*10)/10) + "%</b>";
+}
+function stationStatusHTML(race, geo){
+  if (!state.sel){
+    return '<span class="muted">' + (LANG==="en" ? "Tap any station for details" : "撳任何一個站睇詳情") + "</span>";
+  }
+  var st = chartStation(race, state.sel), gs = geo ? geoStation(geo, state.sel) : null;
+  if (!st) return "";
+  var prev = null;
+  for (var i=0;i<race.stations.length;i++){ if (race.stations[i].code===state.sel && i>0) prev = race.stations[i-1]; }
+  var h = '<span class="stname">' + esc(st.code) + " · " + esc(st.name) + "</span> — " +
+    (LANG==="en" ? "km " : "累計 ") + "<b>" + st.km + " km</b>";
+  if (gs) h += " · " + (LANG==="en" ? "elev " : "海拔 ") + "<b>" + Math.round(gs.ele) + " m</b>";
+  if (prev) h += " · " + (LANG==="en" ? "from prev " : "距上一站 ") + "<b>" + (Math.round((st.km-prev.km)*10)/10) + " km</b>";
+  if (st.cot) h += ' · <span class="cotred">' + esc(cotText(st)) + "</span>";
+  else if (st.code!=="START") h += ' · <span class="muted">' + (LANG==="en" ? "No cut-off at this station" : "此站不設關門時間") + "</span>";
+  if (st.svc && st.svc.length) h += "<br>" + (LANG==="en" ? "Services: " : "服務：") + esc(svcText(st));
+  return h;
+}
+
+/* ================= RACE VIEW ================= */
+var HMONG_SEG = { "START>A17":{g:170,l:127}, "A17>A13":{g:490,l:263}, "A13>A14":{g:830,l:343}, "A14>A15":{g:850,l:433}, "A15>A16":{g:400,l:1108}, "A16>FINISH":{g:210,l:559} };
+function segChipsHTML(race, geo){
+  var h = '<div class="seggrid">';
+  for (var i=0;i<race.stations.length-1;i++){
+    var s0 = race.stations[i], s1 = race.stations[i+1];
+    var km = Math.round((s1.km - s0.km)*10)/10;
+    var g=null, l=null, key = s0.code+">"+s1.code;
+    if (race.id==="hmong-day" && HMONG_SEG[key]){ g=HMONG_SEG[key].g; l=HMONG_SEG[key].l; }
+    else if (geo){ for (var j=0;j<geo.segs.length;j++){ if (geo.segs[j].from===s0.code && geo.segs[j].to===s1.code){ g=geo.segs[j].gain; l=geo.segs[j].loss; } } }
+    h += '<button type="button" class="segchip'+(state.sel===s1.code?" sel":"")+'" data-seg="'+s1.code+'">' +
+      '<span class="sl">'+esc(s0.code)+" → "+esc(s1.code)+'</span><span class="sd"><b>'+km+'</b> km</span>' +
+      (g!=null ? '<span class="sg"><b>+'+g+'</b> −'+l+"</span>" : "") + "</button>";
+  }
+  return h + "</div>";
+}
+function stationsHTML(race, geo){
+  var h = '<div class="sttable-wrap"><table class="sttable"><thead><tr>' +
+    "<th>" + (LANG==="en" ? "Station" : "站") + '</th><th>' + (LANG==="en" ? "Distance" : "距離 km") + '</th><th>' + (LANG==="en" ? "Elevation" : "海拔 m") + '</th><th>' + (LANG==="en" ? "Cut-off" : "關門時間") + '</th><th>' + (LANG==="en" ? "Services" : "服務") + "</th></tr></thead><tbody>";
+  race.stations.forEach(function(st){
+    var gs = geo ? geoStation(geo, st.code) : null;
+    var cotCell = "—", cotCls = "cot none";
+    if (st.cot){
+      cotCls = "cot";
+      var cd = LANG==="en" ? (st.cotDayEn || st.cotDay) : st.cotDay;
+      cotCell = esc(st.cot) + (cd ? ' <span class="cd">(' + esc(cd) + ")</span>" : "");
+    }
+    h += '<tr data-st="' + st.code + '" tabindex="0"' + (state.sel===st.code ? ' class="sel"' : "") + ">" +
+      '<td><span class="stcode">' + esc(st.code) + '</span> <span class="stname">' + esc(st.name) + "</span></td>" +
+      '<td class="num"><b>' + st.km + "</b></td>" +
+      '<td class="num">' + (gs ? "<b>" + Math.round(gs.ele) + "</b>" : "—") + "</td>" +
+      '<td class="' + cotCls + '">' + cotCell + "</td>" +
+      '<td class="svc">' + (st.svc && st.svc.length ? esc(svcText(st)) : "—") + "</td></tr>";
+  });
+  return h + "</tbody></table></div>";
+}
+function collectHTML(race){
+  var h = '<section id="sec-bib"><h2 class="secttl">' + (LANG==="en" ? "Race pack collection" : "領選手包（號碼布）") + ' <span class="en">Race Pack Collection</span></h2>';
+  var vu = MAPS_URL["Chiang Mai PAO Park"];
+  h += '<p class="bib-venue">' + (LANG==="en" ? "Venue: " : "地點：") + (vu ? '<a href="' + vu + '" target="_blank" rel="noopener">Chiang Mai PAO Park</a>' : "Chiang Mai PAO Park") + "</p>";
+  h += '<div class="bib-week"><div class="bib-week-head"><span class="t">' + esc(L(COLLECT_W2.frameTitle)) + '</span><span class="d">' + esc(L(COLLECT_W2.frameSub)) + "</span></div>";
+  COLLECT_W2.days.forEach(function(d, di){
+    h += '<div class="bib-cell' + (di % 2 === 1 ? " c-yellow" : "") + '"><div class="bib-cell-head"><span class="dw">' + esc(L(d.dow)) + '</span><span class="dn">' + esc(d.date) + "</span></div>";
+    d.slots.forEach(function(sl){
+      h += '<div class="bib-part"><div class="bib-when"><span class="tm">' + esc(sl.time) + "</span>" + (sl.star ? ' <span class="star">★</span>' : "") + '</div><div class="bib-tags">';
+      sl.races.forEach(function(rid){
+        var rr = raceById(rid); if (!rr) return;
+        h += '<span class="race-tag' + (catInkFor(rr)==="#3d3200" ? " inkdark" : "") + '" style="background:' + catColor(rr) + '">' + esc(raceTag(rr)) + "</span>";
+      });
+      h += "</div></div>";
+    });
+    h += "</div>";
+  });
+  h += "</div>";
+  h += '<p class="bib-legend"><span class="star">★</span> ' + esc(L(COLLECT_W2.legend).replace(/^★\s*/, "")) + "</p>";
+  var bt = L(COLLECT_W2.briefing), bi = bt.search(/[：:]/);
+  h += '<div class="bib-brief">' + (bi > 0 ? "<b>" + esc(bt.slice(0, bi+1)) + "</b>" + esc(bt.slice(bi+1)) : esc(bt)) + "</div>";
+  h += '<div class="bring"><h3>' + esc(L(COLLECT_W2.bringTitle)) + "</h3><ul>";
+  COLLECT_W2.bring.forEach(function(b){
+    var t = L(b), parts = t.split(" — ");
+    h += "<li>" + (parts.length > 1 ? "<b>" + esc(parts[0]) + "</b> — " + esc(parts.slice(1).join(" — ")) : esc(t)) + "</li>";
+  });
+  h += "</ul></div></section>";
+  return h;
+}
+function gearHTML(race){
+  var isH = race.id === "hmong-day";
+  var n = isH ? HMONG_GEAR_DETAIL.length : (race.gear ? race.gear.length : 0);
+  var h = '<section id="sec-gear"><h2 class="secttl">' + (LANG==="en" ? "Mandatory gear" : "官方強制裝備") + ' <span class="en">Mandatory Gear — ' + n + ' Items</span></h2>';
+  h += '<p class="small muted">' + (LANG==="en" ? "Official list (" + race.cat + " category) · checked during the race" : "官方清單（" + race.cat + " 組別）· 比賽期間會檢查") + "</p>";
+  var gim = (typeof GEAR_IMG !== "undefined") ? GEAR_IMG[race.id] : null;
+  if (gim){
+    var gu = GEAR_IMG_BASE + gim.f + "?_a=ATADJAA0";
+    h += '<figure class="gear-figure"><a href="' + gu + '" target="_blank" rel="noopener"><img src="' + gu + '" alt="' + (LANG==="en" ? "Official 2026 mandatory gear chart — " : "大會官方 2026 強制裝備圖 — ") + gim.label + '" loading="lazy"></a>' +
+      "<figcaption>" + (LANG==="en" ? "Official 2026 mandatory gear chart (" + gim.label + ") · tap to enlarge" : "大會官方 2026 強制裝備圖（" + gim.label + "）· 撳圖放大") + "</figcaption></figure>";
+  }
+  h += '<p class="gear-detail-cap">' + (LANG==="en" ? "Full list in text — item-by-item from the official chart (verified)" : "文字版明細 — 官方圖逐項文字對照（已核實）") + "</p>";
+  h += '<details class="gear-details"><summary><span>' + (LANG==="en" ? "Gear list (" + n + " items)" : "裝備明細（" + n + " 項）") + (isH ? (LANG==="en" ? " + penalties" : "＋ 罰則") : "") + '</span><span class="chev">▾</span></summary><ol class="gear-list">';
+  if (isH){
+    HMONG_GEAR_DETAIL.forEach(function(g){
+      h += '<li><span class="gtx"><b>' + esc(LANG==="en" ? g.en : g.zh) + "</b>" +
+        (g.dq ? '<span class="dq">' + (LANG==="en" ? "Missing = instant DQ" : "缺失 = 即時 DQ") + "</span>" : "") +
+        '<span class="d">' + esc(L(g.desc)) + "</span></span></li>";
+    });
+    h += "</ol>";
+    h += '<div class="penalty">' + esc(L(HMONG_GEAR_NOTES.penalties)) + "</div>";
+    h += '<p class="gear-rec">' + esc(L(HMONG_GEAR_NOTES.recommended)) + "</p>";
+  } else if (race.gear){
+    race.gear.forEach(function(k){
+      var g = GI[k]; if (!g) return;
+      h += '<li><span class="gtx"><b>' + esc(L(g)) + "</b></span></li>";
+    });
+    h += "</ol>";
+    h += '<p class="gear-rec">' + (LANG==="en"
+      ? "Hot / cold weather kit lists are part of the mandatory gear; the organiser confirms which set applies 1–2 days before the race."
+      : "冷／熱天氣附加裝備屬強制裝備一部分，大會將於賽前 1–2 日確認啟用邊套。") + "</p>";
+  }
+  return h + "</details></section>";
+}
+function phasesHTML(race){
+  var ph = race.id === "hmong-day" ? HMONG_PHASES : (typeof PHASES !== "undefined" ? PHASES[race.id] : null);
+  if (!ph) return "";
+  var h = '<section id="sec-phases"><h2 class="secttl">' + (LANG==="en" ? "How the race unfolds" : "賽道點讀") + ' <span class="en">' + (LANG==="en" ? "Course Notes" : "How the Race Unfolds") + "</span></h2>";
+  h += '<p class="ph-sub">' + esc(L(ph.intro)) + '</p><div class="phases">';
+  ph.items.forEach(function(p){
+    h += '<div class="phase"><div class="km">' + esc(p.range) + '</div><h3>' + esc(L(p.title)) + "</h3><p>" + esc(L(p.body)) + "</p></div>";
+  });
+  h += "</div>";
+  if (ph.refs && ph.refs.length){
+    h += '<p class="ph-refs">' + (LANG==="en" ? "Course-note references: " : "賽道點讀參考：") + ph.refs.map(function(r){ return '<a href="' + r.u + '" target="_blank" rel="noopener">' + esc(r.n) + "</a>"; }).join(" · ") + "</p>";
+  }
+  return h + "</section>";
+}
+
+function viewRace(id){
+  var race = raceById(id);
+  if (!race){ location.hash = "#/event/chiangmai-utmb"; return; }
+  if (state.race !== id){ state.race = id; state.sel = null; state.scrub = null; state.view = null; state.ptrs = {}; }
+  var geo = race.geo ? GEO[race.geo] : null;
+  var wk = race.week === 1 ? WEATHER.mountain : WEATHER.city;
+  var h = crumbsHTML([
+    {label: LANG==="en"?"Chiang Mai":"清邁總覽", href:"#/event/chiangmai-utmb"},
+    {label: raceTag(race)}
+  ]);
+  h += '<div class="wrap">';
+  /* subnav — rendered AFTER cover/stats/facts （公開卡擺法） */
+  var nav = [["sec-route", LANG==="en"?"Route":"路線圖"]];
+  if (race.stations) nav.push(["sec-stations", LANG==="en"?"Aid stations":"補給站"]);
+  if (race.week === 2) nav.push(["sec-bib", LANG==="en"?"Bib collection":"領選手包"]);
+  if (race.id === "hmong-day" || (typeof PHASES !== "undefined" && PHASES[race.id])) nav.push(["sec-phases", LANG==="en"?"Race read":"賽道點讀"]);
+  if (race.gear || race.id === "hmong-day") nav.push(["sec-gear", LANG==="en"?"Mandatory gear":"強制裝備"]);
+  /* cover — 跟公開卡：倒數膠囊釘封面右上角、天氣框入封面成條連結 */
+  var img = RACEIMG[race.id];
+  h += '<section class="cover">' + (img ? '<img class="bgimg" src="'+img+'" alt="'+esc(raceName(race))+'">' : "");
+  h += '<span class="hero-cdwrap">' + CD_CAL_SVG + '<span class="cdpill" data-cd="' + race.id + '" data-cdpre=""></span></span>';
+  h += '<div class="cin">';
+  h += '<a class="eyebrow" href="'+OFFICIAL_RACE_URL[race.id]+'" target="_blank" rel="noopener">' +
+    esc(EVENT.eyebrow) + "</a>";
+  h += '<h1 class="'+(raceName(race).length > 16 ? "long" : "")+'">' + esc(raceName(race)) + "</h1>";
+  h += '<div class="dateline">' + (LANG==="en"
+      ? esc(race.startD.en) + " 2026 · Chiang Mai, Thailand (UTC+7)"
+      : "2026 年" + esc(race.startD.zh) + " · 泰國清邁（UTC+7）") + "</div>";
+  var sl = L(race.startLoc), fl = race.finLoc ? L(race.finLoc) : null;
+  function vlink(name){ var u = MAPS_URL[name]; return u ? '<a href="'+u+'" target="_blank" rel="noopener">'+esc(name)+"</a>" : esc(name); }
+  if (fl && fl !== sl) h += '<div class="venueline">' + (LANG==="en" ? "Start " : "起點 ") + vlink(sl) + " → " + (LANG==="en" ? "Finish " : "終點 ") + vlink(fl) + "</div>";
+  else h += '<div class="venueline">' + (LANG==="en" ? "Start / Finish " : "起終點 ") + vlink(sl) + "</div>";
+  /* weather — inside the cover, the whole box is one link */
+  h += '<a class="hero-weather" href="'+wk.url+'" target="_blank" rel="noopener">' + HW_ICON_SVG + "<div>" +
+    '<div class="hw-main">' + esc(L(wk.area)) + " · " + boldTempsB(L(wk.cond)) + "</div>" +
+    '<div class="hw-sub">' + esc(wk.sun ? L(wk.sun) + " · " + L(wk.tip) : L(wk.tip)) + "</div>" +
+    '<div class="hw-updated">' + esc(L(WEATHER.updated)) + "</div></div></a>";
+  h += "</div></section>";
+  if (race.gainNote) h += '<p class="small muted" style="margin-top:.5rem">' + esc(L(race.gainNote)) + "</p>";
+  /* stats row （公開卡格式：大數字＋單位＋標籤） */
+  var stats = [];
+  var dm = /^([\d,]+)\s*(.*)$/.exec(race.dist);
+  stats.push({ v: dm ? dm[1] : race.dist, u: dm && dm[2] ? dm[2].toLowerCase() : "", k: LANG==="en" ? "Distance (official)" : "全程距離（官方）" });
+  var gainNum = race.gain.replace(/^\+/, "").replace(/\s*M\+?$/i, "");
+  stats.push({ v: (race.gain.charAt(0)==="+" ? "+" : "") + gainNum, u: "m", k: LANG==="en" ? "Total climb (official)" : "總攀升（官方）" });
+  var limMin = limitMin(race.limit);
+  stats.push({ v: Math.floor(limMin/60) + ":" + String(limMin%60).padStart(2,"0"), u: "", k: LANG==="en" ? "Time limit (hrs)" : "限時（小時）" });
+  if (geo && geo.peak) stats.push({ v: fmtNum(geo.peak.ele), u: "m", k: LANG==="en" ? "Highest point" : "全程最高點" });
+  h += '<div class="stats" style="--n:' + stats.length + '">' + stats.map(function(s){
+    return '<div class="stat"><div class="v">' + esc(s.v) + (s.u ? "<small>" + esc(s.u) + "</small>" : "") + '</div><div class="k">' + esc(s.k) + "</div></div>";
+  }).join("") + "</div>";
+  /* facts row （公開卡格式） */
+  var facts = [];
+  facts.push((LANG==="en" ? "Starts " : "起跑 ") + "<b>" + esc(race.startT) + "</b>");
+  var finSt = race.stations ? race.stations[race.stations.length-1] : null;
+  if (finSt && finSt.cot) facts.push((LANG==="en" ? "Finish cut-off " : "終點關門 ") + "<b>" + esc(finSt.cot) + "</b>");
+  if (race.stations) facts.push((LANG==="en" ? "Aid stations " : "補給站 ") + "<b>" + (race.stations.length - 2) + (LANG==="en" ? "" : " 個") + "</b>");
+  if (fl && fl === sl) facts.push(LANG==="en" ? "Start & finish at the same venue" : "起終點同一地點");
+  h += '<div class="facts">' + facts.map(function(f){ return '<span class="fact">' + f + "</span>"; }).join("") + "</div>";
+  /* subnav */
+  if (geo || race.stations) {
+    h += '<nav class="subnav">' + nav.map(function(n){ return '<a href="#" data-goto="'+n[0]+'">'+esc(n[1])+"</a>"; }).join("") + "</nav>";
+  }
+  /* route */
+  if (geo){
+    var st = steepest(geo);
+    h += '<section id="sec-route"><h2 class="secttl">' + (LANG==="en" ? "Route & elevation" : "路線圖與海拔圖") + ' <span class="en">Route & Elevation</span></h2>';
+    h += '<div class="mapcard"><div class="mapwrap glmapwrap" id="mapWrap">' +
+      '<div id="glmap" role="application" aria-label="' + (LANG==="en" ? "Course map: 2D street map, 3D satellite imagery with terrain; station markers; the green line shows the course from the start to the selected station" : "賽事路線地圖：2D 係街道圖，3D 係衛星圖加立體地形；補給站標記，綠色線顯示由起點到所選站嘅路段") + '"></div>' +
+      '<div class="map-mode" role="group" aria-label="' + (LANG==="en" ? "Map mode" : "地圖模式切換") + '">' +
+      '<button type="button" id="mode2d" class="on" aria-pressed="true" aria-label="' + (LANG==="en" ? "Show 2D map" : "顯示 2D 地圖") + '">2D</button>' +
+      '<button type="button" id="mode3d" aria-pressed="false" aria-label="' + (LANG==="en" ? "Show 3D terrain map" : "顯示 3D 地形地圖") + '">3D</button></div>' +
+      '<button type="button" id="labelsToggle" class="labels-toggle" aria-pressed="true" aria-label="' + (LANG==="en" ? "Hide station labels" : "隱藏地圖站名標籤") + '"><span id="labelsToggleTxt">' + (LANG==="en" ? "Labels: on" : "標籤：開") + '</span></button>' +
+      '<button type="button" id="fitRoute" class="fit-route" disabled aria-label="' + (LANG==="en" ? "Show the whole route" : "顯示全程路線：置中返並顯示成條比賽路線") + '" title="' + (LANG==="en" ? "Show the whole route" : "顯示全程路線") + '">' + FIT_SVG + '</button>' +
+      '<a class="gpx-dl" href="' + GPX_URLS[race.geo] + '" download>' + GPX_DL_SVG + (LANG==="en" ? "Offline GPX" : "下載離線 GPX") + '</a>' +
+      '<div class="map-loading" id="mapLoading"><span id="mapLoadingTxt">' + (LANG==="en" ? "Loading map…" : "載入緊地圖…") + '</span></div>' +
+      '<div class="map-fallback" id="mapFallback" style="display:none"></div></div>';
+    h += '<div class="scrubrow"><span class="hint" id="scrubHint">' + (LANG==="en" ? "Drag to see distance · elevation · gradient (200 m average) · pinch to zoom" : "拖動睇距離・海拔・斜度（200 米平均）・雙指放大") + '</span>' +
+      '<span class="data" id="scrubData" style="display:none"></span>' +
+      '<button type="button" class="scrubx" id="scrubX" aria-label="clear">✕</button></div>';
+    h += '<div class="prof-zoomrow" id="profZoomRow" style="display:none"><span class="zl" id="profZoomLbl"></span><button type="button" class="zr" id="profReset" aria-label="' + (LANG==="en" ? "Reset the profile to the full course" : "重設攀升圖，顯示全程") + '">⟲ ' + (LANG==="en" ? "Full course" : "全程") + '</button></div>';
+    h += '<div class="profwrap" id="profWrap"></div>';
+    h += '<div class="steep">' + (LANG==="en" ? "Steepest: " : "最斜：") +
+      (LANG==="en" ? "uphill " : "上坡 ") + "<b>+" + Math.round(st.up.g) + "%</b>（km " + st.up.from + "–" + st.up.to + "）· " +
+      (LANG==="en" ? "downhill " : "落坡 ") + "<b>" + Math.round(st.dn.g) + "%</b>（km " + st.dn.from + "–" + st.dn.to + "）</div>";
+    h += "</div>";
+    h += '<div class="legend"><span><span class="sw" style="background:#93a583"></span>' + (LANG==="en" ? "Official GPX course" : "官方 GPX 全程軌跡") + '</span>·<span><span class="sw" style="background:#2fbf5a"></span>' + (LANG==="en" ? "Selected section" : "所選路段") + '</span>·<span style="color:#d92323; font-weight:700">' + (LANG==="en" ? "Red = cut-off time (COT)" : "紅字 = 關門時間（COT）") + "</span></div>";
+    h += '<div class="statusbox" id="statusBox"></div>';
+    h += segChipsHTML(race, geo);
+    h += '<div class="srcmicro">' + (LANG==="en" ? "Route & elevation: official race GPX · Cut-offs: official time chart · Measured course " : "路線及攀升：大會官方 GPX · 關門時間：官方時間表 · GPX 實測全程 ") + geo.totalKm + " km</div>";
+    h += "</section>";
+    h += '<section id="sec-stations"><h2 class="secttl">' + (LANG==="en" ? "Aid stations & cut-offs" : "補給站與關門時間") + ' <span class="en">Aid Stations & Cut-offs</span></h2>' + stationsHTML(race, geo) + "</section>";
+  } else if (race.desc){
+    h += '<div class="routedesc"><b>' + (LANG==="en" ? "Route: " : "路線：") + "</b>" + esc(L(race.desc)) +
+      (race.stNote ? "<br>" + esc(L(race.stNote)) : "") + "</div>";
+  }
+  if (race.week === 2) h += collectHTML(race);
+  h += phasesHTML(race);
+  if (race.gear || race.id === "hmong-day") h += gearHTML(race);
+  h += '<a class="backlink" href="#/event/chiangmai-utmb">← ' + (LANG==="en" ? "Back to event overview" : "返清邁總覽") + "</a></div>";
+  app.innerHTML = h; foot.innerHTML = footHTML();
+  tickCountdowns();
+  bindRace(race, geo);
+  window.scrollTo(0,0);
+}
+/* ================= MapLibre map （移植自公開卡定版 2026-11-18） =================
+   One MapLibre GL engine for 2D + 3D: 2D = OpenStreetMap raster, pitch 0;
+   3D = Esri World Imagery + AWS terrarium DEM terrain (1.4x), pitch 62 /
+   bearing -25, cross-faded on one ~1.4 s clock. Station markers are HTML
+   capsules (deep green, white codes), a brown capsule for the summit, and
+   one combined split frame when START/FINISH share a venue. Labels toggle
+   switches capsules to small dots. Tapping a marker only selects; a
+   selection from the rows / chips / profile eases the camera to the
+   station. If the CDN or map fails, the area falls back to a text list. */
+var GL = null;
+var MAP_OSM_URL = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+var MAP_SAT_URL = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
+var MAP_DEM_URL = "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png";
+var MAP_PITCH_3D = 62, MAP_BEARING_3D = -25, MAP_MAX_PITCH = 70;
+var MAP_TERRAIN_EX = 1.4, MAP_TERRAIN_STEP = 0.03;
+
+function loadMapLibre(){
+  return new Promise(function(resolve, reject){
+    if (window.maplibregl){ resolve(window.maplibregl); return; }
+    if (!document.querySelector('link[data-maplibre-css]')){
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css";
+      link.setAttribute("data-maplibre-css", "1");
+      document.head.appendChild(link);
+    }
+    var timer = window.setTimeout(function(){ reject(new Error("timeout")); }, 20000);
+    var script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js";
+    script.async = true;
+    script.onload = function(){ window.clearTimeout(timer); if (window.maplibregl) resolve(window.maplibregl); else reject(new Error("maplibregl missing")); };
+    script.onerror = function(){ window.clearTimeout(timer); reject(new Error("script load failed")); };
+    document.head.appendChild(script);
+  });
+}
+function teardownMap(){
+  if (!GL) return;
+  if (GL.fadeAnim) cancelAnimationFrame(GL.fadeAnim);
+  if (GL.dimTimer) window.clearTimeout(GL.dimTimer);
+  if (GL.map){ try{ GL.map.remove(); }catch(e){} }
+  GL = null;
+}
+function geoBounds(geo){
+  var minLat=1e9, maxLat=-1e9, minLon=1e9, maxLon=-1e9;
+  geo.track.forEach(function(p){
+    minLat=Math.min(minLat,p[0]); maxLat=Math.max(maxLat,p[0]);
+    minLon=Math.min(minLon,p[1]); maxLon=Math.max(maxLon,p[1]);
+  });
+  return [[minLon,minLat],[maxLon,maxLat]];
+}
+function sfCombined(geo){
+  var s=null, f=null;
+  geo.stations.forEach(function(gs){ if (gs.code==="START") s=gs; if (gs.code==="FINISH") f=gs; });
+  if (!s || !f) return false;
+  var cs = Math.cos(s.lat*Math.PI/180);
+  var dLat=(s.lat-f.lat)*111, dLon=(s.lon-f.lon)*111*cs;
+  return Math.sqrt(dLat*dLat + dLon*dLon) < 1.5;
+}
+function mapCapsuleHtml(code, sel){
+  return '<div class="map-pin' + (sel ? " map-pin--sel" : "") + '">' + esc(code) + "</div>";
+}
+function mapDotHtml(sel, summit){
+  var size = sel ? 12 : 8;
+  return '<div class="map-dot-wrap" style="width:22px;height:22px"><div class="map-dot' + (sel ? " map-dot--sel" : "") + (summit ? " map-dot--summit" : "") + '" style="width:' + size + 'px;height:' + size + 'px"></div></div>';
+}
+function mapSfHtml(){
+  var a = LANG==="en" ? "START" : "起點", b = LANG==="en" ? "FINISH" : "終點";
+  var cls = state.sel==="START" ? " sel-start" : (state.sel==="FINISH" ? " sel-finish" : "");
+  return '<div class="map-pin map-pin--sf' + cls + '"><span class="map-pin-half map-pin-half--start" data-sf="START">' + a + '</span><span class="map-pin-half map-pin-half--finish" data-sf="FINISH">' + b + "</span></div>";
+}
+function renderMapMarkers(){
+  if (!GL || !GL.ready) return;
+  for (var code in GL.markers.stations){
+    var entry = GL.markers.stations[code];
+    entry.el.innerHTML = GL.labelsOn ? mapCapsuleHtml(code, state.sel===code) : mapDotHtml(state.sel===code, false);
+  }
+  if (GL.markers.sf){
+    GL.markers.sf.el.innerHTML = GL.labelsOn ? mapSfHtml() : mapDotHtml(state.sel==="START" || state.sel==="FINISH", false);
+  }
+  if (GL.markers.summit){
+    GL.markers.summit.el.innerHTML = GL.labelsOn ? '<div class="map-pin map-pin--summit">' + fmtNum(GL.geo.peak.ele) + ' m</div>' : mapDotHtml(false, true);
+  }
+}
+function setMapMarkersDimmed(dim){
+  if (!GL) return;
+  function apply(entry){ if (entry) entry.el.style.opacity = dim ? "0.4" : ""; }
+  for (var code in GL.markers.stations) apply(GL.markers.stations[code]);
+  apply(GL.markers.sf); apply(GL.markers.summit);
+}
+function syncMapProgress(){
+  if (!GL || !GL.ready || !GL.map) return;
+  var geo = GL.geo, frac = 0;
+  if (state.scrub != null) frac = state.scrub/geo.totalKm;
+  else if (state.sel){ var gs = geoStation(geo, state.sel); if (gs) frac = gs.frac; }
+  var src = GL.map.getSource("route-progress");
+  if (src){
+    var coords = [];
+    if (frac > 0){
+      var fr = trackFracs(geo);
+      for (var i=0;i<geo.track.length;i++){ if (fr[i] <= frac) coords.push([geo.track[i][1], geo.track[i][0]]); }
+      var ep = trackPointAt(geo, frac);
+      coords.push([ep[1], ep[0]]);
+    }
+    if (!coords.length) coords = [[geo.track[0][1], geo.track[0][0]], [geo.track[0][1], geo.track[0][0]]];
+    if (coords.length === 1) coords.push(coords[0]);
+    src.setData({type:"Feature", properties:{}, geometry:{type:"LineString", coordinates:coords}});
+  }
+  var ssrc = GL.map.getSource("scrub");
+  if (ssrc){
+    if (state.scrub == null) ssrc.setData({type:"FeatureCollection", features:[]});
+    else {
+      var pt = trackPointAt(geo, state.scrub/geo.totalKm);
+      ssrc.setData({type:"Feature", properties:{}, geometry:{type:"Point", coordinates:[pt[1], pt[0]]}});
+    }
+  }
+}
+function easeMapTo(code){
+  if (!GL || !GL.ready || !GL.map) return;
+  var gs = geoStation(GL.geo, code); if (!gs) return;
+  GL.map.easeTo({center:[gs.lon, gs.lat], duration:900});
+}
+function updateLabelsBtn(){
+  if (!GL) return;
+  var btn = document.getElementById("labelsToggle"); if (!btn) return;
+  var txt = document.getElementById("labelsToggleTxt");
+  if (txt) txt.textContent = GL.labelsOn ? (LANG==="en" ? "Labels: on" : "標籤：開") : (LANG==="en" ? "Labels: off" : "標籤：關");
+  btn.setAttribute("aria-pressed", GL.labelsOn ? "true" : "false");
+  btn.setAttribute("aria-label", GL.labelsOn ? (LANG==="en" ? "Hide station labels" : "隱藏地圖站名標籤") : (LANG==="en" ? "Show station labels" : "顯示地圖站名標籤"));
+}
+function failRaceMap(race, geo){
+  if (GL) GL.failed = true;
+  var ld = document.getElementById("mapLoading"); if (ld) ld.style.display = "none";
+  var mp = document.getElementById("glmap"); if (mp) mp.style.display = "none";
+  var wrap = document.getElementById("mapWrap");
+  if (wrap){
+    var ctrls = wrap.querySelectorAll(".map-mode, .labels-toggle, .fit-route");
+    for (var i=0;i<ctrls.length;i++) ctrls[i].style.display = "none";
+  }
+  var fb = document.getElementById("mapFallback"); if (!fb) return;
+  var items = "";
+  (race.stations || []).forEach(function(st){
+    var gs = geoStation(geo, st.code);
+    items += "<li><b>" + esc(st.code) + "</b> " + esc(st.name) + " · " + st.km + " km" +
+      (gs ? " · " + (LANG==="en" ? "elev " : "海拔 ") + Math.round(gs.ele) + " m · " + gs.lat.toFixed(5) + ", " + gs.lon.toFixed(5) : "") + "</li>";
+  });
+  fb.innerHTML = "<p style='margin:0'>" + (LANG==="en" ? "The map could not be loaded (network or library issue). Station list:" : "地圖載入唔到（網絡或程式庫問題），補給站清單：") + "</p><ul>" + items + "</ul>";
+  fb.style.display = "block";
+}
+function initRaceMap(race, geo, onSelect){
+  var container = document.getElementById("glmap");
+  if (!container) return;
+  GL = { map:null, lib:null, ready:false, failed:false, markers:{stations:{}, sf:null, summit:null},
+         labelsOn:true, mode:"2d", fade:0, fadeAnim:0, terrainEx:-1, dimTimer:0, race:race, geo:geo };
+  var my = GL;
+  var b2 = document.getElementById("mode2d"), b3 = document.getElementById("mode3d");
+  if (b2) b2.addEventListener("click", function(){ setMapMode("2d"); });
+  if (b3) b3.addEventListener("click", function(){ setMapMode("3d"); });
+  var lt = document.getElementById("labelsToggle");
+  if (lt) lt.addEventListener("click", function(){
+    if (GL !== my) return;
+    my.labelsOn = !my.labelsOn; updateLabelsBtn(); renderMapMarkers();
+  });
+  var frb = document.getElementById("fitRoute");
+  if (frb) frb.addEventListener("click", function(){ fitWholeRoute(); });
+  loadMapLibre().then(function(gl){
+    if (GL !== my) return;
+    my.lib = gl;
+    try{
+      var routeCoords = geo.track.map(function(p){ return [p[1], p[0]]; });
+      var map = new gl.Map({
+        container: container,
+        style:{ version:8,
+          sources:{
+            osm:{type:"raster", tiles:[MAP_OSM_URL], tileSize:256, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'},
+            sat:{type:"raster", tiles:[MAP_SAT_URL], tileSize:256, attribution:"Esri, Maxar, Earthstar Geographics"},
+            dem:{type:"raster-dem", tiles:[MAP_DEM_URL], encoding:"terrarium", tileSize:256, maxzoom:15}
+          },
+          layers:[
+            {id:"bg", type:"background", paint:{"background-color":"#e9e4d8"}},
+            {id:"osm", type:"raster", source:"osm", paint:{"raster-opacity":1, "raster-fade-duration":0}},
+            {id:"sat", type:"raster", source:"sat", paint:{"raster-opacity":0, "raster-fade-duration":0}},
+            {id:"hillshade", type:"hillshade", source:"dem", layout:{visibility:"none"},
+              paint:{"hillshade-shadow-color":"rgba(0,0,0,0)", "hillshade-highlight-color":"rgba(255,255,255,0)", "hillshade-accent-color":"rgba(0,0,0,0)", "hillshade-exaggeration":0}}
+          ]},
+        center: routeCoords[Math.floor(routeCoords.length/2)],
+        zoom: 10.3, pitch: 0, bearing: 0, maxPitch: MAP_MAX_PITCH, antialias: true,
+        attributionControl: {compact:false}
+      });
+      my.map = map;
+      map.on("movestart", function(){ window.clearTimeout(my.dimTimer); if (GL===my) setMapMarkersDimmed(true); });
+      map.on("moveend", function(){
+        window.clearTimeout(my.dimTimer);
+        my.dimTimer = window.setTimeout(function(){ if (GL===my) setMapMarkersDimmed(false); }, 140);
+      });
+      map.dragRotate.disable();
+      map.touchPitch.disable();
+      map.touchZoomRotate.disableRotation();
+      var loadTimer = window.setTimeout(function(){
+        if (GL === my && !my.ready){ teardownMap(); failRaceMap(race, geo); }
+      }, 25000);
+      map.on("load", function(){
+        window.clearTimeout(loadTimer);
+        if (GL !== my) return;
+        try{
+          map.addSource("route", {type:"geojson", data:{type:"Feature", properties:{}, geometry:{type:"LineString", coordinates:routeCoords}}});
+          map.addLayer({id:"route-line", type:"line", source:"route", layout:{"line-cap":"round", "line-join":"round"}, paint:{"line-color":"#7d9a78", "line-width":4, "line-opacity":0.85}});
+          map.addSource("route-progress", {type:"geojson", data:{type:"Feature", properties:{}, geometry:{type:"LineString", coordinates:routeCoords.slice(0,1)}}});
+          map.addLayer({id:"route-progress-line", type:"line", source:"route-progress", layout:{"line-cap":"round", "line-join":"round"}, paint:{"line-color":"#2e9e5b", "line-width":6, "line-opacity":0.95}});
+          map.addSource("scrub", {type:"geojson", data:{type:"FeatureCollection", features:[]}});
+          map.addLayer({id:"scrub-dot", type:"circle", source:"scrub", paint:{"circle-radius":7, "circle-color":"#15803d", "circle-stroke-color":"#ffffff", "circle-stroke-width":2.5}});
+          function mkEl(label){
+            var el = document.createElement("div");
+            el.style.cursor = "pointer";
+            el.setAttribute("role", "button");
+            el.setAttribute("aria-label", label);
+            return el;
+          }
+          var combined = sfCombined(geo);
+          geo.stations.forEach(function(gs){
+            if (combined && (gs.code==="START" || gs.code==="FINISH")) return;
+            var st = chartStation(race, gs.code);
+            var el = mkEl(gs.code + (st ? " " + st.name : ""));
+            var marker = new gl.Marker({element: el}).setLngLat([gs.lon, gs.lat]).addTo(map);
+            (function(code){
+              el.addEventListener("click", function(ev){ ev.stopPropagation(); onSelect(code); });
+            })(gs.code);
+            my.markers.stations[gs.code] = {marker: marker, el: el};
+          });
+          if (combined){
+            var sGs = geoStation(geo, "START"), fGs = geoStation(geo, "FINISH");
+            var sfEl = mkEl(LANG==="en" ? "Start / Finish" : "起點／終點");
+            var sfMarker = new gl.Marker({element: sfEl}).setLngLat([(sGs.lon+fGs.lon)/2, (sGs.lat+fGs.lat)/2]).addTo(map);
+            sfEl.addEventListener("click", function(ev){
+              ev.stopPropagation();
+              var choice = null, t = ev.target, hops = 0;
+              while (t && hops < 3 && !choice){
+                if (t.getAttribute && t.getAttribute("data-sf")) choice = t.getAttribute("data-sf");
+                t = t.parentElement; hops++;
+              }
+              if (!choice && ev.clientX != null){
+                var r = sfEl.getBoundingClientRect();
+                if (r.width > 0) choice = (ev.clientX < r.left + r.width/2) ? "START" : "FINISH";
+              }
+              onSelect(choice === "FINISH" ? "FINISH" : "START");
+            });
+            my.markers.sf = {marker: sfMarker, el: sfEl};
+          }
+          if (geo.peak){
+            var pp = trackPointAt(geo, geo.peak.frac);
+            var sEl = document.createElement("div");
+            sEl.style.pointerEvents = "none";
+            var sMarker = new gl.Marker({element: sEl}).setLngLat([pp[1], pp[0]]).addTo(map);
+            my.markers.summit = {marker: sMarker, el: sEl};
+          }
+          my.ready = true;
+          renderMapMarkers();
+          map.fitBounds(geoBounds(geo), {padding: 26, duration: 0});
+          syncMapProgress();
+          var ld = document.getElementById("mapLoading"); if (ld) ld.style.display = "none";
+          var fr2 = document.getElementById("fitRoute"); if (fr2) fr2.disabled = false;
+        }catch(e){ failRaceMap(race, geo); }
+      });
+      map.on("error", function(){});
+    }catch(e){ if (GL === my) failRaceMap(race, geo); }
+  }).catch(function(){ if (GL === my) failRaceMap(race, geo); });
+}
+function setMapMode(mode){
+  if (!GL || !GL.ready || !GL.map || mode === GL.mode) return;
+  GL.mode = mode;
+  var my = GL, map = GL.map, to3d = (mode === "3d");
+  var b2 = document.getElementById("mode2d"), b3 = document.getElementById("mode3d");
+  if (b2){ b2.classList.toggle("on", !to3d); b2.setAttribute("aria-pressed", !to3d ? "true" : "false"); }
+  if (b3){ b3.classList.toggle("on", to3d); b3.setAttribute("aria-pressed", to3d ? "true" : "false"); }
+  if (to3d) map.setLayoutProperty("hillshade", "visibility", "visible");
+  else { map.dragRotate.disable(); map.touchPitch.disable(); map.touchZoomRotate.disableRotation(); }
+  var startFade = my.fade, targetFade = to3d ? 1 : 0;
+  var startPitch = map.getPitch(), targetPitch = to3d ? MAP_PITCH_3D : 0;
+  var startBearing = map.getBearing(), targetBearing = to3d ? MAP_BEARING_3D : 0;
+  var dBearing = ((targetBearing - startBearing + 540) % 360) - 180;
+  function applyFrame(e){
+    if (GL !== my) return;
+    var fade = startFade + (targetFade - startFade)*e;
+    my.fade = fade;
+    map.setPaintProperty("sat", "raster-opacity", fade);
+    map.setPaintProperty("osm", "raster-opacity", 1 - fade);
+    var hsFade = to3d ? fade : Math.min(1, Math.max(0, (fade - 0.2)/0.8));
+    map.setPaintProperty("hillshade", "hillshade-exaggeration", 0.35*hsFade);
+    map.setPaintProperty("hillshade", "hillshade-shadow-color", "rgba(0,0,0," + (0.35*hsFade).toFixed(3) + ")");
+    map.setPaintProperty("hillshade", "hillshade-highlight-color", "rgba(255,255,255," + hsFade.toFixed(3) + ")");
+    map.setPaintProperty("hillshade", "hillshade-accent-color", "rgba(0,0,0," + hsFade.toFixed(3) + ")");
+    var exTarget = MAP_TERRAIN_EX * fade;
+    if (exTarget > 0.004){
+      if (my.terrainEx === -1){ my.terrainEx = exTarget; map.setTerrain({source: "dem", exaggeration: exTarget}); }
+      else if (Math.abs(exTarget - my.terrainEx) >= MAP_TERRAIN_STEP || (to3d && exTarget >= MAP_TERRAIN_EX)){ my.terrainEx = exTarget; map.setTerrain({source: "dem", exaggeration: exTarget}); }
+    }
+    map.jumpTo({pitch: startPitch + (targetPitch - startPitch)*e, bearing: startBearing + dBearing*e});
+  }
+  function finalize(){
+    if (GL !== my) return;
+    if (to3d){ map.dragRotate.enable(); map.touchPitch.enable(); map.touchZoomRotate.enableRotation(); }
+    else {
+      if (my.terrainEx !== -1){ map.setTerrain(null); my.terrainEx = -1; }
+      map.setLayoutProperty("hillshade", "visibility", "none");
+      map.dragRotate.disable(); map.touchPitch.disable(); map.touchZoomRotate.disableRotation();
+    }
+  }
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches){ applyFrame(1); finalize(); return; }
+  if (my.fadeAnim) cancelAnimationFrame(my.fadeAnim);
+  var DURATION = 1400, t0 = performance.now();
+  function step(now){
+    if (GL !== my) return;
+    var raw = Math.min(1, (now - t0)/DURATION);
+    var e = raw < 0.5 ? 4*raw*raw*raw : 1 - (Math.pow(-2*raw + 2, 3)/2);
+    applyFrame(e);
+    if (raw < 1) my.fadeAnim = requestAnimationFrame(step);
+    else { my.fadeAnim = 0; finalize(); }
+  }
+  my.fadeAnim = requestAnimationFrame(step);
+}
+function fitWholeRoute(){
+  if (!GL || !GL.ready || !GL.map) return;
+  GL.map.fitBounds(geoBounds(GL.geo), {padding: 32, duration: 800,
+    pitch: GL.mode === "3d" ? MAP_PITCH_3D : 0,
+    bearing: GL.mode === "3d" ? MAP_BEARING_3D : 0});
+}
+
+function bindRace(race, geo){
+  teardownMap();
+  var navLinks = document.querySelectorAll("[data-goto]");
+  for (var i=0;i<navLinks.length;i++){
+    navLinks[i].addEventListener("click", function(ev){
+      ev.preventDefault();
+      var t = document.getElementById(this.getAttribute("data-goto"));
+      if (t) t.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+  }
+  if (!geo) return;
+  var profWrap = document.getElementById("profWrap");
+  var profZoomRow = document.getElementById("profZoomRow");
+  var profZoomLbl = document.getElementById("profZoomLbl");
+  var profReset = document.getElementById("profReset");
+  var statusBox = document.getElementById("statusBox");
+  var scrubHint = document.getElementById("scrubHint");
+  var scrubData = document.getElementById("scrubData");
+  var scrubX = document.getElementById("scrubX");
+  var rafPend = false;
+  function draw(){
+    profWrap.innerHTML = profSVG(race, geo);
+    statusBox.innerHTML = stationStatusHTML(race, geo);
+    var st = scrubText(race, geo);
+    if (st){ scrubHint.style.display="none"; scrubData.style.display=""; scrubData.innerHTML = st; scrubX.classList.add("on"); }
+    else { scrubHint.style.display=""; scrubData.style.display="none"; scrubX.classList.remove("on"); }
+    if (profZoomRow){
+      if (state.view){
+        profZoomRow.style.display = "flex";
+        if (profZoomLbl) profZoomLbl.textContent = (LANG==="en" ? "Zoomed: km " : "已放大：") + state.view.a.toFixed(1) + " – " + state.view.b.toFixed(1) + " km";
+      } else profZoomRow.style.display = "none";
+    }
+    renderMapMarkers();
+    syncMapProgress();
+    var segs = document.querySelectorAll("[data-seg]");
+    for (var j=0;j<segs.length;j++){
+      segs[j].className = "segchip" + (state.sel===segs[j].getAttribute("data-seg") ? " sel" : "");
+    }
+    var rows = document.querySelectorAll("tr[data-st]");
+    for (var k=0;k<rows.length;k++){
+      rows[k].className = (state.sel===rows[k].getAttribute("data-st") ? "sel" : "");
+    }
+  }
+  function queueDraw(){ if (!rafPend){ rafPend = true; requestAnimationFrame(function(){ rafPend=false; draw(); }); } }
+  function selectStation(code, origin){
+    state.sel = (state.sel === code) ? null : code;
+    if (state.sel) state.scrub = null;
+    draw();
+    if (state.sel && statusBox){ statusBox.classList.remove("pop"); void statusBox.offsetWidth; statusBox.classList.add("pop"); }
+    if (state.sel && origin !== "map") easeMapTo(code);
+  }
+  var stBtns = document.querySelectorAll("tr[data-st]");
+  for (var i=0;i<stBtns.length;i++){
+    stBtns[i].addEventListener("click", function(){ selectStation(this.getAttribute("data-st")); });
+    stBtns[i].addEventListener("keydown", function(e){ if (e.key==="Enter" || e.key===" "){ e.preventDefault(); selectStation(this.getAttribute("data-st")); } });
+  }
+  var segBtns = document.querySelectorAll("[data-seg]");
+  for (var j=0;j<segBtns.length;j++) segBtns[j].addEventListener("click", function(){ selectStation(this.getAttribute("data-seg")); });
+  scrubX.addEventListener("click", function(){ state.scrub = null; draw(); });
+  /* profile scrub + pinch zoom */
+  function kmFromEvent(e){
+    var r = profWrap.getBoundingClientRect();
+    var a = state.view ? state.view.a : 0, b = state.view ? state.view.b : geo.totalKm;
+    var f = (e.clientX - r.left) / r.width;
+    return Math.max(0, Math.min(geo.totalKm, a + f*(b-a)));
+  }
+  var pinch0 = null;
+  profWrap.addEventListener("pointerdown", function(e){
+    profWrap.setPointerCapture(e.pointerId);
+    state.ptrs[e.pointerId] = e.clientX;
+    var ids = Object.keys(state.ptrs);
+    if (ids.length === 2){
+      pinch0 = { d: Math.abs(state.ptrs[ids[0]] - state.ptrs[ids[1]]), view: state.view ? {a:state.view.a, b:state.view.b} : {a:0, b:geo.totalKm} };
+    } else if (ids.length === 1){
+      state.scrub = kmFromEvent(e); queueDraw();
+    }
+  });
+  profWrap.addEventListener("pointermove", function(e){
+    if (!(e.pointerId in state.ptrs)) return;
+    state.ptrs[e.pointerId] = e.clientX;
+    var ids = Object.keys(state.ptrs);
+    if (ids.length === 2 && pinch0){
+      var d = Math.abs(state.ptrs[ids[0]] - state.ptrs[ids[1]]);
+      if (d > 10){
+        var midKm = kmFromEvent(e), span0 = pinch0.view.b - pinch0.view.a;
+        var span = Math.max(2, Math.min(geo.totalKm, span0 * pinch0.d / d));
+        var f = (midKm - pinch0.view.a) / span0;
+        var na = Math.max(0, Math.min(geo.totalKm - span, midKm - f*span));
+        state.view = { a: na, b: na + span };
+        queueDraw();
+      }
+    } else if (ids.length === 1){
+      state.scrub = kmFromEvent(e); queueDraw();
+    }
+  });
+  function endPtr(e){
+    delete state.ptrs[e.pointerId];
+    if (Object.keys(state.ptrs).length < 2) pinch0 = null;
+  }
+  profWrap.addEventListener("pointerup", endPtr);
+  profWrap.addEventListener("pointercancel", endPtr);
+  profWrap.addEventListener("wheel", function(e){
+    e.preventDefault();
+    var km = kmFromEvent(e);
+    var a = state.view ? state.view.a : 0, b = state.view ? state.view.b : geo.totalKm;
+    var span = (b-a) * (e.deltaY > 0 ? 1.2 : 0.83);
+    span = Math.max(2, Math.min(geo.totalKm, span));
+    var f = (km-a)/(b-a), na = Math.max(0, Math.min(geo.totalKm-span, km - f*span));
+    state.view = span >= geo.totalKm ? null : { a: na, b: na + span };
+    queueDraw();
+  }, { passive:false });
+  profWrap.addEventListener("dblclick", function(){ state.view = null; queueDraw(); });
+  if (profReset) profReset.addEventListener("click", function(){ state.view = null; queueDraw(); });
+  draw();
+  initRaceMap(race, geo, function(code){ selectStation(code, "map"); });
+}
+
+/* ================= ROUTER / INIT ================= */
+function route(){
+  teardownMap();
+  var hs = location.hash || "#/";
+  if (hs.indexOf("#/") !== 0){ return; }
+  var parts = hs.replace(/^#\//, "").split("/");
+  if (parts[0] === "" ) viewEvent();
+  else if (parts[0] === "region") viewEvent();
+  else if (parts[0] === "event") viewEvent();
+  else if (parts[0] === "race") viewRace(parts[1]);
+  else viewEvent();
+}
+document.getElementById("langBtn").addEventListener("click", function(){
+  LANG = (LANG === "zh") ? "en" : "zh";
+  this.textContent = (LANG === "zh") ? "EN" : "中文";
+  document.documentElement.lang = (LANG === "zh") ? "zh-Hant" : "en";
+  route();
+});
+window.addEventListener("hashchange", route);
+route();
+})();
+</script>
+</body>
+</html>
